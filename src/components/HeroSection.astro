@@ -1,0 +1,64 @@
+---
+const ctas = [
+  { label: 'GitHub', href: 'https://github.com/JrMarcello', variant: 'primary' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/marcelojr', variant: 'ghost' },
+  { label: 'Resume', href: '/resume.pdf', variant: 'ghost' }
+];
+
+const signalCards = [
+  { label: 'Disponibilidade', value: 'Part-time', detail: 'Mentorias e Architecture Reviews' },
+  { label: 'Local', value: 'São Paulo → Global', detail: 'Operação remota com fusos -3 a +2' },
+  { label: 'Stack Atual', value: 'Astro · Dokploy · Edge', detail: 'Portfólio evoluído em bento grid' }
+];
+---
+
+<section class="relative overflow-hidden rounded-bento border border-white/5 bg-surface-900/70 p-8 shadow-card">
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-1/2 opacity-60" aria-hidden="true">
+    <div class="h-full bg-gradient-to-r from-primary-600/30 via-accent-500/20 to-primary-400/20 blur-3xl"></div>
+  </div>
+  <div class="relative grid gap-8 lg:grid-cols-[3fr,2fr]">
+    <div class="space-y-6">
+      <p class="text-xs uppercase tracking-[0.6em] text-neutral-500">Architecture Lead</p>
+      <h1 class="text-4xl leading-tight text-neutral-50 md:text-5xl">
+        Arquitetando plataformas que conectam estratégia, equipes e operação.
+      </h1>
+      <p class="max-w-2xl text-lg text-neutral-200">
+        Transformo objetivos nebulosos em roadmaps visuais, com governança pragmática e storytelling técnico
+        para executivos. Cada decisão é registrada com trade-offs claros e indicadores de sucesso.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        {ctas.map((cta) => {
+          const baseClasses = 'inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500';
+          const variantClasses = cta.variant === 'primary'
+            ? 'bg-primary-600 text-white shadow-glow'
+            : 'border border-white/20 bg-surface-800/60 text-neutral-100';
+
+          return (
+            <a
+              class={`${baseClasses} ${variantClasses}`}
+              href={cta.href}
+              target={cta.href.startsWith('http') ? '_blank' : undefined}
+              rel={cta.href.startsWith('http') ? 'noreferrer' : undefined}
+            >
+              <span>{cta.label}</span>
+              <svg class="h-3.5 w-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 11L11 3" />
+                <path d="M5 3H11V9" />
+              </svg>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+
+    <div class="grid gap-4">
+      {signalCards.map(({ label, value, detail }) => (
+        <article class="rounded-2xl border border-white/10 bg-surface-950/70 p-4">
+          <p class="text-xs uppercase tracking-[0.4em] text-neutral-500">{label}</p>
+          <p class="text-xl font-mono text-primary-300">{value}</p>
+          <p class="text-sm text-neutral-300">{detail}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
