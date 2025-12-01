@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://jrmarcello.github.io/site-perfil-prof/sitemap.xml
