@@ -1,0 +1,60 @@
+# Project Agents Charter
+
+## Mission
+
+- Deliver the personal architecture portfolio strictly following the steps defined in `execution-plan.md`.
+- Preserve the plan locally only; never stage or commit `execution-plan.md`.
+- Maintain clarity of architectural intent across UX, content, and infrastructure layers.
+
+## Collaboration Principles
+
+- Document rationale for non-trivial decisions directly in PR descriptions or commit messages.
+- Prefer small, incremental changes aligned to a single issue from the execution plan.
+- Keep communication artifacts (issues, tasks) bilingual-friendly: Portuguese titles with concise English summaries when possible.
+
+## Branching & Commits
+
+- Work on short-lived branches named `feature/<milestone>-<issue>`.
+- One commit per plan issue with message format `feat: <Milestone>.<Issue> <short summary>`.
+- Before merging, rebase onto `main`, run lint/tests, and ensure clean `git status`.
+
+## Coding Standards
+
+- Stack: Astro + Tailwind CSS + TypeScript when authoring components.
+- Enforce dark-first design (Slate/Zinc 900 background, Indigo/Violet primary accents).
+- Use semantic HTML, accessible headings hierarchy, ARIA labels for interactive elements, and keyboard-visible focus rings.
+- Organize UI pieces under `src/components`, layouts under `src/layouts`, and routed pages under `src/pages`.
+
+## Styling & Design System
+
+- Define typography tokens for `Inter` (body) and `JetBrains Mono` (technical headings/code).
+- Centralize Tailwind customizations in `tailwind.config.mjs` using CSS variables for color ramps.
+- Favor utility classes for alignment/spacing; extract `@apply` rules only for repeated complex patterns.
+
+## Content Guidelines
+
+- Bio and hero copy must emphasize architectural strategy, not generic development.
+- Case studies follow `Problema → Solução Arquitetural → Resultados`.
+- Skills grouped by capability layers: Cloud, Backend, DevOps, Observability.
+
+## Infrastructure & DevOps
+
+- Containerize using multi-stage Dockerfile (builder + lightweight Nginx runtime).
+- Provide `.dockerignore` mirroring `.gitignore` plus build artifacts and secrets.
+- Deploy via Dokploy on Hostinger VPS; document DNS, SSL, and pipeline steps.
+
+## Testing & Quality
+
+- Run `npm run lint` and `npm run build` before any commit.
+- Target Lighthouse scores ≥ 90 for Performance and Accessibility; log evidence in PR notes.
+- Favor WebP/AVIF assets; load heavy resources lazily.
+
+## Documentation
+
+- Keep `README.md` updated per milestone with setup, deployment, and architecture diagram (`User -> Cloudflare (DNS) -> VPS (Dokploy Proxy) -> Docker (Nginx + Site)`).
+- Add changelog snippets under a "Milestones" section summarizing delivered issues.
+
+## Security & Secrets
+
+- Never commit API keys or credentials; use Dokploy secrets for runtime configuration.
+- Restrict CORS and security headers via Nginx config in Docker image.

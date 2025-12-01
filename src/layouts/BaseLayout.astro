@@ -1,0 +1,23 @@
+---
+import '../styles/global.css';
+
+const {
+  title: pageTitle = 'Site Pessoal',
+  description: pageDescription = 'Portfolio focado em arquitetura de software.'
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="pt-BR" class="bg-slate-950 text-slate-100">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={pageDescription} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <main class="mx-auto max-w-6xl px-6 py-12">
+      <slot />
+    </main>
+  </body>
+</html>
