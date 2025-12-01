@@ -1,28 +1,31 @@
 ---
-const stackHighlights = ['Astro', 'Tailwind', 'TypeScript', 'Dokploy', 'Docker', 'Cloudflare'];
+const stackHighlights = ['AWS (EKS/Lambda)', 'Java · Spring Boot', 'Node.js · TypeScript', 'PHP · Laravel', 'Go', 'Terraform', 'Docker · Kubernetes'];
 const gitStats = [
-  { label: 'Repos arquiteturais', value: '42' },
-  { label: 'Commits 90d', value: '312' },
-  { label: 'Followers', value: '540+' }
+  { label: 'Repos públicos', value: '19+' },
+  { label: 'Anos de experiência', value: '13+' },
+  { label: 'Linguagem principal', value: 'TS' }
 ];
-const learning = ['Temporal.io', 'WebAssembly runtimes', 'AI Observability', 'LLM Guardrails'];
+const learning = ['Well-Architected Framework', 'Design Patterns avançados', 'Golang', 'Rust'];
+
+const currentDate = new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+const formattedDate = currentDate.charAt(0).toUpperCase() + currentDate.slice(1);
 ---
 
 <section class="space-y-6">
   <div class="flex items-center justify-between gap-4">
     <div>
-      <p class="text-xs uppercase tracking-[0.5em] text-neutral-400">Layout Bento</p>
-      <h2 class="text-2xl">Estado atual do estúdio arquitetural</h2>
+      <p class="text-xs uppercase tracking-[0.5em] text-neutral-400">Snapshot</p>
+      <h2 class="text-2xl">Visão geral</h2>
     </div>
-    <span class="rounded-full border border-white/10 px-4 py-1 text-xs text-neutral-300">Atualizado semanalmente</span>
+    <span class="rounded-full border border-white/10 px-4 py-1 text-xs text-neutral-300">{formattedDate}</span>
   </div>
 
   <div class="grid gap-4 lg:grid-cols-6">
     <article class="rounded-bento border border-white/5 bg-surface-900/70 p-6 shadow-card lg:col-span-3">
       <p class="text-xs uppercase tracking-[0.3em] text-neutral-500">Stack Principal</p>
-      <h3 class="mt-2 text-2xl text-neutral-50">Decisions over tools</h3>
+      <h3 class="mt-2 text-2xl text-neutral-50">Tecnologias do dia a dia</h3>
       <p class="mt-3 text-sm text-neutral-300">
-        Destaque para ferramentas que reforçam visão arquitetural e entregam governança.
+        Do backend à infraestrutura — as tecnologias que sustentam os sistemas que projeto e entrego.
       </p>
       <div class="mt-4 flex flex-wrap gap-2">
         {stackHighlights.map((item) => (
@@ -33,11 +36,11 @@ const learning = ['Temporal.io', 'WebAssembly runtimes', 'AI Observability', 'LL
 
     <article class="rounded-bento border border-white/5 bg-gradient-to-br from-primary-600/30 to-surface-900/60 p-6 shadow-card lg:col-span-2">
       <p class="text-xs uppercase tracking-[0.3em] text-neutral-200">Localização</p>
-      <h3 class="text-xl text-neutral-50">São Paulo · Remote-first</h3>
-      <p class="mt-2 text-sm text-neutral-200">Operação multi-fuso (-3 a +2). Workshops híbridos e roadshows executivos.</p>
+      <h3 class="text-xl text-neutral-50">João Pessoa · Remoto</h3>
+      <p class="mt-2 text-sm text-neutral-200">Disponível para projetos globais em fusos -3 a +2 UTC.</p>
       <div class="mt-4 rounded-2xl border border-white/10 bg-surface-950/60 p-4">
-        <p class="text-xs text-neutral-400">Base atual</p>
-        <p class="text-neutral-100">Latitude -23.55 · Cloudflare Warp always-on</p>
+        <p class="text-xs text-neutral-400">Contato</p>
+        <p class="text-neutral-100">marcello.dudk@gmail.com</p>
       </div>
     </article>
 
@@ -54,8 +57,8 @@ const learning = ['Temporal.io', 'WebAssembly runtimes', 'AI Observability', 'LL
     </article>
 
     <article class="rounded-bento border border-white/5 bg-surface-900/70 p-6 shadow-card lg:col-span-3">
-      <p class="text-xs uppercase tracking-[0.3em] text-neutral-500">Currently Learning</p>
-      <h3 class="mt-2 text-xl text-neutral-50">Explorando próximos pilares</h3>
+      <p class="text-xs uppercase tracking-[0.3em] text-neutral-500">Foco Atual</p>
+      <h3 class="mt-2 text-xl text-neutral-50">Estudando agora</h3>
       <div class="mt-4 grid gap-3 md:grid-cols-2">
         {learning.map((topic) => (
           <div class="rounded-2xl border border-white/10 bg-surface-950/70 px-4 py-3 text-sm text-neutral-100">

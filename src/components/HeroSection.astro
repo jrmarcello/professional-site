@@ -2,13 +2,13 @@
 const ctas = [
   { label: 'GitHub', href: 'https://github.com/JrMarcello', variant: 'primary' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/marcelo-jr-9698874a', variant: 'ghost' },
-  { label: 'Resume', href: '/resume.pdf', variant: 'ghost' }
+  { label: 'Currículo', href: '/resume', variant: 'ghost' }
 ];
 
 const signalCards = [
-  { label: 'Disponibilidade', value: 'Part-time', detail: 'Mentorias e Architecture Reviews' },
-  { label: 'Local', value: 'São Paulo → Global', detail: 'Operação remota com fusos -3 a +2' },
-  { label: 'Stack Atual', value: 'Astro · Dokploy · Edge', detail: 'Portfólio evoluído em bento grid' }
+  { label: 'Atuação', value: 'Consultor & PJ', detail: 'Projetos sob demanda · Squads remotos' },
+  { label: 'Local', value: 'João Pessoa, Brasil', detail: 'Remoto · Fusos -3 a +2' },
+  { label: 'Certificação', value: 'AWS Solutions Architect', detail: 'Associate · 2x Certified', badge: 'https://www.credly.com/badges/0d0332c2-5ce2-4192-aee3-dcaeb2d06c88/public_url' }
 ];
 ---
 
@@ -18,13 +18,19 @@ const signalCards = [
   </div>
   <div class="relative grid gap-8 lg:grid-cols-[3fr,2fr]">
     <div class="space-y-6">
-      <p class="text-xs uppercase tracking-[0.6em] text-neutral-500">Architecture Lead</p>
-      <h1 class="text-4xl leading-tight text-neutral-50 md:text-5xl">
-        Arquitetando plataformas que conectam estratégia, equipes e operação.
-      </h1>
+      <div class="flex items-start justify-between gap-6">
+        <div class="space-y-6">
+          <p class="text-xs uppercase tracking-[0.6em] text-neutral-500">Solution Architect · Backend Engineer</p>
+          <h1 class="text-4xl leading-tight text-neutral-50 md:text-5xl">
+            Arquiteto sistemas que escalam junto com o seu negócio.
+          </h1>
+        </div>
+        <img src="/profile.jpg" alt="Marcelo Jr" class="hidden h-20 w-20 flex-shrink-0 rounded-full border-2 border-primary-500/50 shadow-lg lg:block" />
+      </div>
       <p class="max-w-2xl text-lg text-neutral-200">
-        Transformo objetivos nebulosos em roadmaps visuais, com governança pragmática e storytelling técnico
-        para executivos. Cada decisão é registrada com trade-offs claros e indicadores de sucesso.
+        13+ anos projetando sistemas distribuídos na AWS para bancos, fintechs e SaaS. Especialista em
+        microserviços, Kubernetes, modernização de legados e observabilidade. Do design ao deploy — com
+        foco em disponibilidade e segurança.
       </p>
       <div class="flex flex-wrap gap-3">
         {ctas.map((cta) => {
@@ -52,11 +58,23 @@ const signalCards = [
     </div>
 
     <div class="grid gap-4">
-      {signalCards.map(({ label, value, detail }) => (
+      {signalCards.map(({ label, value, detail, badge }) => (
         <article class="rounded-2xl border border-white/10 bg-surface-950/70 p-4">
           <p class="text-xs uppercase tracking-[0.4em] text-neutral-500">{label}</p>
-          <p class="text-xl font-mono text-primary-300">{value}</p>
-          <p class="text-sm text-neutral-300">{detail}</p>
+          {badge ? (
+            <a href={badge} target="_blank" rel="noreferrer" class="group flex items-center gap-3">
+              <img src="/aws-saa-badge.png" alt="AWS Solutions Architect Associate Badge" class="h-12 w-12" />
+              <div>
+                <p class="text-lg font-mono text-primary-300 group-hover:text-primary-200">{value}</p>
+                <p class="text-sm text-neutral-300">{detail}</p>
+              </div>
+            </a>
+          ) : (
+            <>
+              <p class="text-xl font-mono text-primary-300">{value}</p>
+              <p class="text-sm text-neutral-300">{detail}</p>
+            </>
+          )}
         </article>
       ))}
     </div>

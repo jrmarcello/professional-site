@@ -37,3 +37,7 @@ build/
 
 # Local planning docs
 execution-plan.md
+
+# Personal documents
+curriculo-marcelo-jr.pdf
+*.pdf
