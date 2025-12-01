@@ -514,15 +514,15 @@ body {
 }
 
 .current-marker {
-    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
-    box-shadow: 0 0 0 4px #8b5cf6 !important;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+    box-shadow: 0 0 0 4px #3b82f6 !important;
     animation: pulse-current 2s infinite;
 }
 
 .current-content {
-    background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%) !important;
-    border: 2px solid #8b5cf6 !important;
-    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.15) !important;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%) !important;
+    border: 2px solid #3b82f6 !important;
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.15) !important;
     position: relative;
     overflow: hidden;
 }
@@ -534,14 +534,14 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%);
+    background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
 }
 
 .current-badge {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     color: white;
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
@@ -549,30 +549,30 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .current-position .timeline-title {
-    color: #6b21a8;
+    color: #1e40af;
     font-weight: 700;
 }
 
 .current-position .timeline-company {
-    color: #8b5cf6;
+    color: #3b82f6;
     font-weight: 600;
 }
 
 .current-position .timeline-period {
-    color: #7c3aed;
+    color: #2563eb;
     font-weight: 600;
 }
 
 @keyframes pulse-current {
     0%, 100% {
-        box-shadow: 0 0 0 4px #8b5cf6;
+        box-shadow: 0 0 0 4px #3b82f6;
     }
     50% {
-        box-shadow: 0 0 0 8px rgba(139, 92, 246, 0.3);
+        box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.3);
     }
 }
 

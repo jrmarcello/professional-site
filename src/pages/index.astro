@@ -1,74 +1,194 @@
 ---
 
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const caseStudies = [
+	{
+		title: 'Observability Mesh LATAM',
+		context: 'Telco Tier-1 · 7 regiões',
+		problem: 'SRE operava com 9 stacks de monitoramento distintos e MTTR acima de 90 minutos.',
+		solution: 'Modelei uma malha de eventos OpenTelemetry com coleta unificada, camada Kafka para correlação e painéis JetBrains Mono com foco em fluxos de decisão.',
+		results: ['+28% de detecção proativa', '-37% no MTTR e relatos executivos claros em 2 semanas.']
+	},
+	{
+		title: 'API Strategy to Event Backbone',
+		context: 'Fintech Série C',
+		problem: 'APIs monolíticas bloqueavam squads e dificultavam auditoria de compliance.',
+		solution: 'Migramos contratos para GraphQL Federation, stream de auditoria em DynamoDB + S3 e camadas CQRS em Go.',
+		results: ['Liberação semanal virou diária', 'Relatórios SOC2 automáticos baseados em eventos.']
+	},
+	{
+		title: 'Edge AI para Field Ops',
+		context: 'Energy & Utilities',
+		problem: 'Times de campo operavam sem contexto, causando visitas desnecessárias.',
+		solution: 'Plantei arquitetura serverless com inferência em Lambda + IoT Greengrass, sincronizando dados críticos via Cloudflare Workers.',
+		results: ['-22% deslocamentos', 'Telemetria near-real-time para NOC global.']
+	}
+];
+
+const skillLayers = [
+	{
+		layer: 'Cloud',
+		summary: 'Governança + Landing Zones + FinOps.',
+		items: ['AWS Control Tower', 'Azure Arc & Policy', 'Terraform Blueprints', 'FinOps dashboards']
+	},
+	{
+		layer: 'Backend',
+		summary: 'Domínio e consistência eventual.',
+		items: ['Domain-Driven APIs', 'Event Sourcing', 'GraphQL Federation', 'Node.js · Go · Astro']
+	},
+	{
+		layer: 'DevOps',
+		summary: 'Pipelines opinados e Dokploy.',
+		items: ['GitHub Actions workflows', 'Dokploy deployment blueprints', 'Kubernetes + Helm', 'Progressive delivery']
+	},
+	{
+		layer: 'Observability',
+		summary: 'SLOs antes de features.',
+		items: ['OpenTelemetry', 'Grafana/Loki', 'Elastic APM', 'SLI/SLO storytelling']
+	}
+];
 ---
 
-<BaseLayout title="Design System" description="Tokens iniciais para o portfolio arquitetural.">
-	<section class="space-y-6">
-		<p class="text-xs uppercase tracking-[0.5em] text-neutral-400">Milestone 1.2</p>
-		<h1 class="text-4xl text-primary-300">Dark Nebula System</h1>
-		<p class="max-w-3xl text-neutral-200">
-			Paleta dark orientada a arquitetura: superfícies Slate/Zinc 900, highlights Indigo/Violet e fontes
-			Inter + JetBrains Mono para manter narrativa técnica. Esses tokens guiam todos os próximos componentes.
+<BaseLayout title="Perfil Arquitetural" description="Conteúdo reposicionado para destacar estratégia e camadas.">
+	<section class="space-y-5">
+		<p class="text-xs uppercase tracking-[0.5em] text-neutral-400">Milestone 1.3</p>
+		<h1 class="text-4xl text-neutral-50">Bio com foco em decisões</h1>
+		<p class="max-w-4xl text-lg text-neutral-200">
+			Sou arquiteto de soluções que começa pela estratégia. Traduzo OKRs em diagramas acionáveis,
+			crio guardrails de plataforma e conecto times de produto, SRE e negócio por meio de narrativas
+			claras. Minha régua: cada decisão precisa listar trade-offs, riscos e métricas de impacto.
 		</p>
-		<div class="flex flex-wrap gap-3">
-			<span class="rounded-full bg-surface-800/60 px-4 py-2 text-xs font-medium text-neutral-200">Surface 950 · #020617</span>
-			<span class="rounded-full bg-primary-600 px-4 py-2 text-xs font-medium text-neutral-50">Primary 600 · #6d28d9</span>
-			<span class="rounded-full bg-accent-500 px-4 py-2 text-xs font-medium text-surface-950">Accent 500 · #60a5fa</span>
+		<div class="grid gap-4 text-sm text-neutral-300 md:grid-cols-3">
+			<p class="rounded-bento border border-white/5 bg-surface-900/60 p-4 font-mono text-xs uppercase tracking-[0.3em]">Drivers · Strategy · Architecture Reviews</p>
+			<p class="rounded-bento border border-white/5 bg-surface-900/60 p-4">Opero como parceiro tático de CTOs: defino roadmaps de plataforma, facilito architecture boards e crio playbooks reprodutíveis.</p>
+			<p class="rounded-bento border border-white/5 bg-surface-900/60 p-4">Entrega sempre ancorada em resultados mensuráveis antes de sprintar features.</p>
 		</div>
 	</section>
 
-	<section class="grid gap-6 lg:grid-cols-3">
-		<article class="rounded-bento border border-white/5 bg-surface-900/60 p-6 shadow-card">
-			<h2 class="text-sm text-neutral-300">Cores base</h2>
-			<div class="mt-4 grid gap-4">
-				<div class="flex items-center justify-between">
+	<section class="space-y-4">
+		<div class="flex items-center justify-between gap-4">
+			<div>
+				<p class="text-xs uppercase tracking-[0.5em] text-neutral-400">Case Studies</p>
+				<h2 class="text-2xl">Problema → Solução Arquitetural → Resultados</h2>
+			</div>
+			<span class="rounded-full bg-primary-600 px-4 py-2 text-xs font-semibold text-neutral-50">Formato fixo</span>
+		</div>
+		<div class="grid gap-6 md:grid-cols-3">
+			{caseStudies.map(({ title, context, problem, solution, results }) => (
+				<article class="flex flex-col gap-4 rounded-bento border border-white/5 bg-surface-900/60 p-5 shadow-card" aria-label={`Case study ${title}`}>
 					<div>
-						<p class="text-neutral-200">Surface</p>
-						<p class="text-xs text-neutral-400">bg-surface-950 · bg-surface-900</p>
+						<p class="text-xs uppercase tracking-[0.3em] text-neutral-500">{context}</p>
+						<h3 class="text-xl text-primary-300">{title}</h3>
 					</div>
-					<div class="flex gap-2">
-						<span class="h-10 w-10 rounded-full bg-surface-950"></span>
-						<span class="h-10 w-10 rounded-full bg-surface-800"></span>
+					<div class="space-y-2 text-sm">
+						<p class="text-neutral-400">Problema</p>
+						<p class="text-neutral-100">{problem}</p>
+					</div>
+					<div class="space-y-2 text-sm">
+						<p class="text-neutral-400">Solução Arquitetural</p>
+						<p class="text-neutral-100">{solution}</p>
+					</div>
+					<div class="space-y-2 text-sm">
+						<p class="text-neutral-400">Resultados</p>
+						<ul class="space-y-1 text-neutral-100">
+							{results.map((result) => (
+								<li class="flex items-center gap-2" aria-label={`Resultado ${result}`}>
+									<span class="h-1.5 w-1.5 rounded-full bg-accent-500"></span>
+									<span>{result}</span>
+								</li>
+							))}
+						</ul>
+					</div>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<section class="space-y-4">
+		<p class="text-xs uppercase tracking-[0.5em] text-neutral-400">Skill Layers</p>
+		<h2 class="text-2xl">Mapa de capacidades por camada</h2>
+		<div class="grid gap-4 md:grid-cols-2">
+			{skillLayers.map(({ layer, summary, items }) => (
+				<article class="rounded-bento border border-white/5 bg-surface-900/60 p-5" aria-label={`Camada ${layer}`}>
+					<header class="flex items-center justify-between">
+						<div>
+							<p class="text-xs uppercase tracking-[0.3em] text-neutral-500">{layer}</p>
+							<p class="text-neutral-200">{summary}</p>
+						</div>
+						<span class="text-xs text-neutral-500">{items.length} focos</span>
+					</header>
+					<ul class="mt-4 space-y-2 text-sm text-neutral-100">
+						{items.map((item) => (
+							<li class="flex items-center gap-2" aria-label={`Skill ${item}`}>
+								<span class="h-1.5 w-1.5 rounded-full bg-primary-500"></span>
+								<span>{item}</span>
+							</li>
+						))}
+					</ul>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<section class="space-y-6">
+		<p class="text-xs uppercase tracking-[0.5em] text-neutral-400">Milestone 1.2 · Design Tokens</p>
+		<h2 class="text-3xl text-primary-300">Dark Nebula System</h2>
+		<p class="max-w-3xl text-neutral-200">
+			Tokens de cor, tipografia e raios foram consolidados para manter consistência. Todo componente futuro faz referência a esses nomes em vez de valores soltos.
+		</p>
+		<div class="grid gap-6 lg:grid-cols-3">
+			<article class="rounded-bento border border-white/5 bg-surface-900/60 p-6 shadow-card">
+				<h3 class="text-sm text-neutral-300">Cores base</h3>
+				<div class="mt-4 grid gap-4">
+					<div class="flex items-center justify-between">
+						<div>
+							<p class="text-neutral-200">Surface</p>
+							<p class="text-xs text-neutral-400">bg-surface-950 · bg-surface-900</p>
+						</div>
+						<div class="flex gap-2">
+							<span class="h-10 w-10 rounded-full bg-surface-950"></span>
+							<span class="h-10 w-10 rounded-full bg-surface-800"></span>
+						</div>
+					</div>
+					<div class="flex items-center justify-between">
+						<div>
+							<p class="text-neutral-200">Primary</p>
+							<p class="text-xs text-neutral-400">primary-300 → 600</p>
+						</div>
+						<div class="flex gap-2">
+							<span class="h-10 w-10 rounded-full bg-primary-400"></span>
+							<span class="h-10 w-10 rounded-full bg-primary-600"></span>
+						</div>
 					</div>
 				</div>
-				<div class="flex items-center justify-between">
-					<div>
-						<p class="text-neutral-200">Primary</p>
-						<p class="text-xs text-neutral-400">from primary-300 to 600</p>
-					</div>
-					<div class="flex gap-2">
-						<span class="h-10 w-10 rounded-full bg-primary-400"></span>
-						<span class="h-10 w-10 rounded-full bg-primary-600"></span>
-					</div>
+			</article>
+			<article class="rounded-bento border border-white/5 bg-surface-900/60 p-6 shadow-card">
+				<h3 class="text-sm text-neutral-300">Tipografia</h3>
+				<div class="mt-4 space-y-4">
+					<p class="text-sm text-neutral-400">Body — Inter Variable</p>
+					<p class="text-lg text-neutral-100">Arquitetura centrada em estratégia</p>
+					<p class="text-sm text-neutral-400">Tech Copy — JetBrains Mono</p>
+					<p class="font-mono text-2xl text-primary-300">Layered Decisions &gt; Stack Choices</p>
 				</div>
-			</div>
-		</article>
-		<article class="rounded-bento border border-white/5 bg-surface-900/60 p-6 shadow-card">
-			<h2 class="text-sm text-neutral-300">Tipografia</h2>
-			<div class="mt-4 space-y-4">
-				<p class="text-sm text-neutral-400">Body — Inter</p>
-				<p class="text-lg text-neutral-100">Arquitetura centrada em estratégia</p>
-				<p class="text-sm text-neutral-400">Headings — JetBrains Mono</p>
-				<p class="font-mono text-2xl text-primary-300">Layered Decisions &gt; Stack Choices</p>
-			</div>
-		</article>
-		<article class="rounded-bento border border-white/5 bg-surface-900/60 p-6 shadow-card">
-			<h2 class="text-sm text-neutral-300">Tokens extras</h2>
-			<ul class="mt-4 space-y-3 text-sm text-neutral-300">
-				<li class="flex items-center justify-between">
-					<span>Raios</span>
-					<span class="text-neutral-400">rounded-bento · 1.75rem</span>
-				</li>
-				<li class="flex items-center justify-between">
-					<span>Sombras</span>
-					<span class="text-neutral-400">shadow-card · shadow-glow</span>
-				</li>
-				<li class="flex items-center justify-between">
-					<span>Grid utilitário</span>
-					<span class="text-neutral-400">.grid-overlay utility</span>
-				</li>
-			</ul>
-		</article>
+			</article>
+			<article class="rounded-bento border border-white/5 bg-surface-900/60 p-6 shadow-card">
+				<h3 class="text-sm text-neutral-300">Tokens extras</h3>
+				<ul class="mt-4 space-y-3 text-sm text-neutral-300">
+					<li class="flex items-center justify-between">
+						<span>Raios</span>
+						<span class="text-neutral-400">rounded-bento · 1.75rem</span>
+					</li>
+					<li class="flex items-center justify-between">
+						<span>Sombras</span>
+						<span class="text-neutral-400">shadow-card · shadow-glow</span>
+					</li>
+					<li class="flex items-center justify-between">
+						<span>Grid utilitário</span>
+						<span class="text-neutral-400">.grid-overlay utility</span>
+					</li>
+				</ul>
+			</article>
+		</div>
 	</section>
 </BaseLayout>
