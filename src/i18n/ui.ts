@@ -6,10 +6,10 @@ export const ui = {
     'nav.projects': 'Projetos',
     
     // Hero Section
-    'hero.role': 'Solution Architect · Backend Engineer',
+    'hero.role': 'Arquiteto de Software e Soluções',
     'hero.headline': 'Arquiteto sistemas que escalam junto com o seu negócio.',
     'hero.description': '13+ anos projetando sistemas distribuídos na AWS para bancos, fintechs e SaaS. Especialista em microserviços, Kubernetes, modernização de legados e observabilidade. Do design ao deploy — com foco em disponibilidade e segurança.',
-    'hero.availability': 'Consultor & PJ',
+    'hero.availability': 'Disponibilidade',
     'hero.availabilityDesc': 'Projetos sob demanda · Squads remotos',
     'hero.location': 'João Pessoa, Brasil',
     'hero.locationDesc': 'Remoto · Fusos -3 a +2',
@@ -95,10 +95,10 @@ export const ui = {
     'nav.projects': 'Projects',
     
     // Hero Section
-    'hero.role': 'Solution Architect · Backend Engineer',
+    'hero.role': 'Software & Solutions Architect',
     'hero.headline': 'I architect systems that scale with your business.',
     'hero.description': '13+ years designing distributed systems on AWS for banks, fintechs, and SaaS. Expert in microservices, Kubernetes, legacy modernization, and observability. From design to deploy — focused on availability and security.',
-    'hero.availability': 'Consultant & Contractor',
+    'hero.availability': 'Availability',
     'hero.availabilityDesc': 'On-demand projects · Remote squads',
     'hero.location': 'João Pessoa, Brazil',
     'hero.locationDesc': 'Remote · UTC -3 to +2',

@@ -78,6 +78,56 @@ const ogLocale = lang === 'pt' ? 'pt_BR' : 'en_US';
     <!-- Additional SEO -->
     <meta name="author" content="Marcelo Jr" />
     <meta name="theme-color" content="#0f0f14" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Marcelo Jr",
+        "jobTitle": lang === 'pt' ? "Arquiteto de Software e Soluções" : "Software & Solutions Architect",
+        "description": pageDescription,
+        "url": siteUrl,
+        "image": imageUrl,
+        "email": "marcello.dudk@gmail.com",
+        "telephone": "+55 83 98831-7867",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "João Pessoa",
+          "addressRegion": "Paraíba",
+          "addressCountry": "BR"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/marcelo-jr-9698874a",
+          "https://github.com/jrmarcello"
+        ],
+        "knowsAbout": [
+          "AWS", "Cloud Architecture", "Microservices", "Kubernetes", 
+          "Node.js", "TypeScript", "Java", "Spring Boot", "Docker",
+          "System Design", "DDD", "Event-Driven Architecture"
+        ],
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "AWS Certified Solutions Architect – Associate",
+            "credentialCategory": "certification",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Amazon Web Services"
+            }
+          }
+        ],
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Instituto Federal da Paraíba"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": lang === 'pt' ? "Consultor Independente" : "Independent Consultant"
+        }
+      }
+    })} />
   </head>
   <body class="relative min-h-screen bg-surface-950 text-neutral-50 antialiased">
     <div class="grid-overlay pointer-events-none absolute inset-0 opacity-50"></div>
