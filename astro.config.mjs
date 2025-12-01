@@ -8,7 +8,7 @@ const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://jrmarcello.github.io',
-  base: isGitHubPages ? '/professional-site' : '/,
+  base: isGitHubPages ? '/professional-site' : '/',
   vite: {
     plugins: [tailwindcss()]
   }
