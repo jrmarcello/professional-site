@@ -1,0 +1,609 @@
+---
+// Página otimizada para gerar PDF - Abra no navegador e use Ctrl+P / Cmd+P
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currículo · Marcelo Jr</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    :root {
+      --primary: #6366f1;
+      --accent: #22d3ee;
+      --surface: #0f0f14;
+      --surface-light: #1a1a24;
+      --text: #e5e5e5;
+      --text-muted: #a3a3a3;
+      --text-dim: #737373;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 10pt;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    
+    .page {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 12mm 14mm;
+      background: var(--surface);
+    }
+    
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+    
+    .header-left h1 {
+      font-size: 28pt;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    
+    .header-left .title {
+      font-size: 11pt;
+      color: var(--primary);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    .header-right {
+      text-align: right;
+      font-size: 9pt;
+      color: var(--text-muted);
+    }
+    
+    .header-right a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    
+    .header-right p {
+      margin-bottom: 3px;
+    }
+    
+    /* Summary */
+    .summary {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    
+    .summary p {
+      color: var(--text);
+      font-size: 10pt;
+      line-height: 1.6;
+    }
+    
+    /* Highlights Grid */
+    .highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    
+    .highlight-item {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 9pt;
+      color: var(--text);
+    }
+    
+    .highlight-item::before {
+      content: "→";
+      color: var(--accent);
+      margin-right: 8px;
+      font-weight: 600;
+    }
+    
+    /* Two Column Layout */
+    .content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+    
+    /* Section Headers */
+    .section-title {
+      font-size: 8pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    /* Experience */
+    .experience-item {
+      margin-bottom: 16px;
+      page-break-inside: avoid;
+    }
+    
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+    
+    .experience-role {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #fff;
+    }
+    
+    .experience-company {
+      font-size: 10pt;
+      color: var(--primary);
+    }
+    
+    .experience-meta {
+      text-align: right;
+      font-size: 8pt;
+      color: var(--text-dim);
+    }
+    
+    .experience-summary {
+      font-size: 9pt;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    
+    .experience-bullets {
+      list-style: none;
+      margin-bottom: 8px;
+    }
+    
+    .experience-bullets li {
+      font-size: 9pt;
+      color: var(--text);
+      margin-bottom: 4px;
+      padding-left: 14px;
+      position: relative;
+    }
+    
+    .experience-bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    
+    .experience-stack {
+      font-size: 8pt;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+    
+    /* Sidebar Items */
+    .sidebar-section {
+      margin-bottom: 18px;
+    }
+    
+    .sidebar-item {
+      margin-bottom: 10px;
+    }
+    
+    .sidebar-item-title {
+      font-size: 10pt;
+      font-weight: 500;
+      color: #fff;
+    }
+    
+    .sidebar-item-subtitle {
+      font-size: 9pt;
+      color: var(--text-muted);
+    }
+    
+    .sidebar-item-meta {
+      font-size: 8pt;
+      color: var(--text-dim);
+    }
+    
+    /* Certifications */
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .cert-badge {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+    
+    .cert-name {
+      font-size: 9pt;
+      color: var(--text);
+    }
+    
+    /* Languages */
+    .lang-item {
+      font-size: 9pt;
+      color: var(--text);
+      margin-bottom: 4px;
+      padding-left: 14px;
+      position: relative;
+    }
+    
+    .lang-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    
+    /* Previous Experience (compact) */
+    .prev-exp-item {
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .prev-exp-item:last-child {
+      border-bottom: none;
+    }
+    
+    .prev-exp-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9pt;
+    }
+    
+    .prev-exp-role {
+      color: #fff;
+      font-weight: 500;
+    }
+    
+    .prev-exp-period {
+      color: var(--text-dim);
+      font-size: 8pt;
+    }
+    
+    .prev-exp-company {
+      font-size: 8pt;
+      color: var(--primary);
+    }
+    
+    .prev-exp-summary {
+      font-size: 8pt;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    
+    /* Print Styles - Light Theme for PDF */
+    @media print {
+      :root {
+        --primary: #4f46e5;
+        --accent: #0891b2;
+        --surface: #ffffff;
+        --surface-light: #f8fafc;
+        --text: #1e293b;
+        --text-muted: #475569;
+        --text-dim: #64748b;
+        --border: #e2e8f0;
+      }
+      
+      body {
+        background: white !important;
+        color: #1e293b !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      
+      .page {
+        padding: 8mm 10mm;
+        background: white !important;
+      }
+      
+      .header-left h1 {
+        color: #1e293b !important;
+      }
+      
+      .experience-role,
+      .sidebar-item-title,
+      .prev-exp-role {
+        color: #1e293b !important;
+      }
+      
+      .summary {
+        background: #f8fafc !important;
+        border-color: #e2e8f0 !important;
+      }
+      
+      .highlight-item {
+        background: #f8fafc !important;
+        border-color: #e2e8f0 !important;
+        color: #1e293b !important;
+      }
+      
+      .highlight-item::before {
+        color: #0891b2 !important;
+      }
+      
+      .experience-bullets li::before,
+      .lang-item::before {
+        background: #0891b2 !important;
+      }
+      
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+    
+    /* Screen hint */
+    .print-hint {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 12px;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+      z-index: 1000;
+    }
+    
+    @media print {
+      .print-hint {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="print-hint">
+    💡 Pressione <strong>Ctrl+P</strong> (ou Cmd+P) para salvar como PDF
+  </div>
+  
+  <div class="page">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1>Marcelo Jr</h1>
+        <p class="title">Arquiteto de Soluções · Engenheiro Backend · AWS Cloud</p>
+      </div>
+      <div class="header-right">
+        <p>📍 João Pessoa, Brasil</p>
+        <p>📧 marcello.dudk@gmail.com</p>
+        <p>📱 (83) 98831-7867</p>
+        <p>🔗 linkedin.com/in/marcelo-jr-9698874a</p>
+        <p>💻 github.com/jrmarcello</p>
+      </div>
+    </header>
+    
+    <!-- Summary -->
+    <section class="summary">
+      <p>
+        Especialista em sistemas financeiros de alta criticidade com 13+ anos de experiência, liderando arquiteturas 
+        distribuídas na AWS, migrações para Kubernetes, decomposição de monólitos e implantação de observabilidade 
+        e IaC para produtos de crédito, pagamentos e plataformas BaaS.
+      </p>
+    </section>
+    
+    <!-- Highlights -->
+    <section class="highlights">
+      <div class="highlight-item">Arquitetura AWS com HA, resiliência e padrões de microserviços/Serverless (EKS, ECS, Lambda)</div>
+      <div class="highlight-item">Engenharia backend com Java (Spring Boot) e Node.js/TypeScript em fluxos event-driven</div>
+      <div class="highlight-item">Modernização de legados usando Strangler Fig, migração segura de dados e convivência com mainframes</div>
+      <div class="highlight-item">Dados & Infraestrutura: tuning de RDS/DynamoDB, mensageria (RabbitMQ/SQS) e observabilidade</div>
+    </section>
+    
+    <!-- Main Content -->
+    <div class="content">
+      <!-- Left Column: Experience -->
+      <main>
+        <h2 class="section-title">Experiência Profissional</h2>
+        
+        <article class="experience-item">
+          <div class="experience-header">
+            <div>
+              <p class="experience-role">Arquiteto de Soluções</p>
+              <p class="experience-company">Itaú Unibanco</p>
+            </div>
+            <div class="experience-meta">
+              <p>mar 2022 · set 2025</p>
+              <p>João Pessoa, Brasil</p>
+            </div>
+          </div>
+          <p class="experience-summary">Desenho de arquiteturas distribuídas de alta complexidade na AWS garantindo requisitos rigorosos de segurança, escalabilidade e resiliência.</p>
+          <ul class="experience-bullets">
+            <li>Migração de microsserviços críticos de ECS Fargate para Amazon EKS com observabilidade centralizada</li>
+            <li>Arquitetura de produtos de crédito (portabilidade e garantia externa) com integrações seguras</li>
+            <li>Estratégias Strangler Fig para modernizar mainframes e monólitos sem downtime</li>
+          </ul>
+          <p class="experience-stack">AWS (EC2, EKS, ECS, Lambda, SNS/SQS, Glue, DynamoDB), Java, Microservices, DDD</p>
+        </article>
+        
+        <article class="experience-item">
+          <div class="experience-header">
+            <div>
+              <p class="experience-role">Engenheiro de Software Sênior</p>
+              <p class="experience-company">Dock</p>
+            </div>
+            <div class="experience-meta">
+              <p>nov 2020 · mar 2022</p>
+              <p>João Pessoa, Brasil</p>
+            </div>
+          </div>
+          <p class="experience-summary">Squad responsável pelo core de Pagamentos e Gestão de Boletos em plataforma BaaS com arquitetura serverless.</p>
+          <ul class="experience-bullets">
+            <li>Implementação de Circuit Breaker entre microsserviços evitando cascading failures</li>
+            <li>Otimização de RDS para picos transacionais com tuning avançado de queries</li>
+            <li>Governança de IaC em CloudFormation garantindo ambientes auditáveis</li>
+          </ul>
+          <p class="experience-stack">AWS Serverless, Lambda, API Gateway, RDS/DynamoDB, CloudFormation, Node.js, Java</p>
+        </article>
+        
+        <article class="experience-item">
+          <div class="experience-header">
+            <div>
+              <p class="experience-role">Engenheiro de Software</p>
+              <p class="experience-company">Leads2b</p>
+            </div>
+            <div class="experience-meta">
+              <p>jan 2020 · set 2020</p>
+              <p>Curitiba, Brasil</p>
+            </div>
+          </div>
+          <p class="experience-summary">Plataforma SaaS B2B de inteligência comercial com foco em modernização do core.</p>
+          <ul class="experience-bullets">
+            <li>Decomposição de monólito PHP para microsserviços Node.js/TypeScript</li>
+            <li>Uso de Redis e ElasticSearch para ganhos de performance e busca</li>
+            <li>Filas RabbitMQ para workloads assíncronos de marketing automation</li>
+          </ul>
+          <p class="experience-stack">Node.js, TypeScript, PHP, Vue.js, MySQL, Redis, ElasticSearch, RabbitMQ</p>
+        </article>
+        
+        <article class="experience-item">
+          <div class="experience-header">
+            <div>
+              <p class="experience-role">Engenheiro de Software</p>
+              <p class="experience-company">Conductor Tecnologia</p>
+            </div>
+            <div class="experience-meta">
+              <p>fev 2019 · dez 2019</p>
+              <p>João Pessoa, Brasil</p>
+            </div>
+          </div>
+          <p class="experience-summary">Squad de Clearing garantindo precisão financeira em liquidação de cartões.</p>
+          <ul class="experience-bullets">
+            <li>Otimização de rotinas batch em PL/SQL para alto volume transacional</li>
+            <li>Manutenção de microsserviços Java/Spring para regras de conciliação</li>
+            <li>Análise e resolução de incidentes críticos em core bancário</li>
+          </ul>
+          <p class="experience-stack">SQL Server, PL/SQL, Java, Spring Boot, Batch Processing</p>
+        </article>
+        
+        <h2 class="section-title" style="margin-top: 16px;">Experiências Anteriores</h2>
+        
+        <div class="prev-exp-item">
+          <div class="prev-exp-header">
+            <span class="prev-exp-role">Desenvolvedor Full Stack</span>
+            <span class="prev-exp-period">abr 2017 · jan 2019</span>
+          </div>
+          <p class="prev-exp-company">Assert Polo Embrapii</p>
+          <p class="prev-exp-summary">Microsserviços Node.js, SPAs Vue.js e MongoDB para operações industriais de alta performance.</p>
+        </div>
+        
+        <div class="prev-exp-item">
+          <div class="prev-exp-header">
+            <span class="prev-exp-role">Engenheiro de Software</span>
+            <span class="prev-exp-period">jan 2015 · abr 2017</span>
+          </div>
+          <p class="prev-exp-company">Evomaster Tecnologia</p>
+          <p class="prev-exp-summary">Full cycle no SaaS imobiliário Havite, aplicando SOLID/Clean Code em arquitetura PHP.</p>
+        </div>
+        
+        <div class="prev-exp-item">
+          <div class="prev-exp-header">
+            <span class="prev-exp-role">Engenheiro de Software</span>
+            <span class="prev-exp-period">dez 2012 · dez 2014</span>
+          </div>
+          <p class="prev-exp-company">Secretaria de Estado da Administração da Paraíba</p>
+          <p class="prev-exp-summary">Sustentação de sistemas governamentais em PHP e scripts de migração MySQL.</p>
+        </div>
+        
+        <div class="prev-exp-item">
+          <div class="prev-exp-header">
+            <span class="prev-exp-role">Pesquisador Acadêmico</span>
+            <span class="prev-exp-period">mar 2011 · jan 2014</span>
+          </div>
+          <p class="prev-exp-company">Grupo de Pesquisa S.I.D.E.</p>
+          <p class="prev-exp-summary">P&D em mineração de dados e Web Semântica (OWL/RDF), com publicações acadêmicas.</p>
+        </div>
+      </main>
+      
+      <!-- Right Column: Sidebar -->
+      <aside>
+        <section class="sidebar-section">
+          <h2 class="section-title">Certificações</h2>
+          <div class="cert-item">
+            <img class="cert-badge" src="https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png" alt="AWS SAA" />
+            <span class="cert-name">AWS Solutions Architect – Associate</span>
+          </div>
+          <div class="cert-item">
+            <img class="cert-badge" src="https://images.credly.com/size/340x340/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" alt="AWS CLF" />
+            <span class="cert-name">AWS Cloud Practitioner</span>
+          </div>
+        </section>
+        
+        <section class="sidebar-section">
+          <h2 class="section-title">Educação</h2>
+          <div class="sidebar-item">
+            <p class="sidebar-item-title">Instituto Federal da Paraíba</p>
+            <p class="sidebar-item-subtitle">Sistemas para Internet · Ciência da Computação</p>
+            <p class="sidebar-item-meta">2010 · 2014</p>
+          </div>
+        </section>
+        
+        <section class="sidebar-section">
+          <h2 class="section-title">Idiomas</h2>
+          <p class="lang-item">Português (nativo)</p>
+          <p class="lang-item">Inglês (Avançado)</p>
+        </section>
+        
+        <section class="sidebar-section">
+          <h2 class="section-title">Tecnologias</h2>
+          <p style="font-size: 8pt; color: var(--text-muted); line-height: 1.6;">
+            <strong style="color: var(--text);">Cloud:</strong> AWS (EKS, ECS, Lambda, SNS/SQS, DynamoDB, RDS, Glue, CloudFormation)<br/>
+            <strong style="color: var(--text);">Backend:</strong> Java, Spring Boot, Node.js, TypeScript, Python<br/>
+            <strong style="color: var(--text);">Data:</strong> PostgreSQL, MySQL, DynamoDB, Redis, ElasticSearch<br/>
+            <strong style="color: var(--text);">DevOps:</strong> Docker, Kubernetes, Terraform, GitHub Actions<br/>
+            <strong style="color: var(--text);">Patterns:</strong> Microservices, DDD, Event-Driven, CQRS, Strangler Fig
+          </p>
+        </section>
+        
+        <section class="sidebar-section">
+          <h2 class="section-title">Disponibilidade</h2>
+          <p style="font-size: 9pt; color: var(--text);">
+            <strong>Consultor & PJ</strong><br/>
+            <span style="color: var(--text-muted);">Projetos sob demanda · Squads remotos</span>
+          </p>
+        </section>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>

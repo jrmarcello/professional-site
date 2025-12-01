@@ -1,0 +1,301 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n';
+
+const lang = 'pt';
+const t = useTranslations(lang);
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const contact = [
+  { label: 'Telefone', value: '(83) 98831-7867', href: 'tel:+5583988317867' },
+  { label: 'Email', value: 'marcello.dudk@gmail.com', href: 'mailto:marcello.dudk@gmail.com' },
+  { label: 'LinkedIn', value: 'linkedin.com/in/marcelo-jr-9698874a', href: 'https://www.linkedin.com/in/marcelo-jr-9698874a' },
+  { label: 'GitHub', value: 'github.com/jrmarcello', href: 'https://github.com/jrmarcello' }
+];
+
+const highlights = [
+  'Arquitetura AWS com HA, resiliência e padrões de microserviços/Serverless (EKS, ECS, Lambda).',
+  'Engenharia backend com Java (Spring Boot) e Node.js/TypeScript em fluxos event-driven.',
+  'Modernização de legados usando Strangler Fig, migração segura de dados e convivência com mainframes.',
+  'Dados & Infraestrutura: tuning de RDS/DynamoDB, mensageria (RabbitMQ/SQS) e observabilidade centralizada.'
+];
+
+const languages = ['Português (nativo)', 'Inglês (Avançado)'];
+
+const certifications = [
+  { name: 'AWS Certified Solutions Architect – Associate', badge: 'https://www.credly.com/badges/0d0332c2-5ce2-4192-aee3-dcaeb2d06c88/public_url', image: `${base}/aws-saa-badge.png` },
+  { name: 'AWS Certified Cloud Practitioner', badge: 'https://www.credly.com/badges/9fd07b51-7be1-4c6b-8bf6-58b09ac52ea8/public_url', image: `${base}/aws-clf-badge.png` }
+];
+
+const experience = [
+  {
+    company: 'Itaú Unibanco',
+    role: 'Arquiteto de Soluções',
+    period: 'mar 2022 · set 2025',
+    location: 'João Pessoa, Brasil',
+    summary:
+      'Desenho de arquiteturas distribuídas de alta complexidade na AWS garantindo requisitos rigorosos de segurança, escalabilidade e resiliência.',
+    bullets: [
+      'Migração de microsserviços críticos de ECS Fargate para Amazon EKS com observabilidade centralizada.',
+      'Arquitetura de produtos de crédito (portabilidade e garantia externa) com integrações seguras e consistência de dados.',
+      'Estratégias Strangler Fig para modernizar mainframes e monólitos sem downtime.'
+    ],
+    stack: 'AWS (EC2, EKS, ECS, Lambda, SNS/SQS, Glue, DynamoDB), Java, Microservices, DDD'
+  },
+  {
+    company: 'Dock',
+    role: 'Engenheiro de Software Sênior',
+    period: 'nov 2020 · mar 2022',
+    location: 'João Pessoa, Brasil',
+    summary:
+      'Squad responsável pelo core de Pagamentos e Gestão de Boletos em plataforma BaaS com arquitetura serverless.',
+    bullets: [
+      'Implementação de Circuit Breaker entre microsserviços evitando cascading failures.',
+      'Otimização de RDS para picos transacionais com tuning avançado de queries.',
+      'Governança de IaC em CloudFormation garantindo ambientes auditáveis.'
+    ],
+    stack: 'AWS Serverless, Lambda, API Gateway, RDS/DynamoDB, CloudFormation, Node.js, Java'
+  },
+  {
+    company: 'Leads2b',
+    role: 'Engenheiro de Software',
+    period: 'jan 2020 · set 2020',
+    location: 'Curitiba, Brasil',
+    summary:
+      'Plataforma SaaS B2B de inteligência comercial com foco em modernização do core.',
+    bullets: [
+      'Decomposição de monólito PHP para microsserviços Node.js/TypeScript.',
+      'Uso de Redis e ElasticSearch para ganhos de performance e busca.',
+      'Filas RabbitMQ para workloads assíncronos de marketing automation.'
+    ],
+    stack: 'Node.js, TypeScript, PHP, Vue.js, MySQL, Redis, ElasticSearch, RabbitMQ'
+  },
+  {
+    company: 'Conductor Tecnologia',
+    role: 'Engenheiro de Software',
+    period: 'fev 2019 · dez 2019',
+    location: 'João Pessoa, Brasil',
+    summary:
+      'Squad de Clearing garantindo precisão financeira em liquidação de cartões.',
+    bullets: [
+      'Otimização de rotinas batch em PL/SQL para alto volume transacional.',
+      'Manutenção de microsserviços Java/Spring para regras de conciliação.',
+      'Análise e resolução de incidentes críticos em core bancário.'
+    ],
+    stack: 'SQL Server, PL/SQL, Java, Spring Boot, Batch Processing'
+  }
+];
+
+const education = [
+  {
+    school: 'Instituto Federal da Paraíba',
+    course: 'Sistemas para Internet · Ciência da Computação',
+    period: '2010 · 2014'
+  }
+];
+
+const previousExperience = [
+    {
+      company: 'Assert Polo Embrapii',
+      role: 'Desenvolvedor Full Stack',
+      period: 'abr 2017 · jan 2019',
+      summary: 'Microsserviços Node.js, SPAs Vue.js e MongoDB para operações industriais de alta performance.'
+    },
+    {
+      company: 'Stefanini',
+      role: 'Desenvolvedor Full Stack',
+      period: 'nov 2016 · abr 2017',
+      summary: 'Sistemas web React.js e Java EE para projetos Petrobras, com foco em front-end responsivo.'
+    },
+    {
+      company: 'Capgemini',
+      role: 'Desenvolvedor Full Stack',
+      period: 'mai 2016 · nov 2016',
+      summary: 'Módulo de Ativos e Relatórios SAP com Java, GWT e SAP GUI, garantindo escalabilidade ao ERP.'
+    },
+    {
+      company: 'BNB (Banco do Nordeste)',
+      role: 'Desenvolvedor Full Stack',
+      period: 'dez 2014 · mai 2016',
+      summary: 'Sistemas Java EE (JSF/PrimeFaces) para compliance bancário — atendimento, BI e controles de TI.'
+    },
+    {
+      company: 'Superintendência Federal de Agricultura',
+      role: 'Estagiário TI',
+      period: 'mar 2013 · dez 2013',
+      summary: 'Suporte de hardware/software e manutenção de planilhas VBA para processos agropecuários.'
+    },
+    {
+      company: 'CREA-PB',
+      role: 'Estagiário TI',
+      period: 'jul 2012 · set 2012',
+      summary: 'Suporte desktop e manutenção de sistemas internos do conselho de engenharia.'
+    }
+];
+
+const technologies = [
+  { cat: 'Linguagens', items: ['TypeScript', 'JavaScript', 'Java', 'Python', 'Go', 'PHP', 'SQL'] },
+  { cat: 'Backend', items: ['Node.js', 'Spring Boot', 'NestJS', 'Fastify', 'Express', 'Laravel'] },
+  { cat: 'Cloud AWS', items: ['EKS', 'ECS', 'Lambda', 'S3', 'DynamoDB', 'RDS', 'SNS/SQS', 'API Gateway', 'CloudFormation', 'CDK'] },
+  { cat: 'Dados', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'ElasticSearch', 'Kafka', 'RabbitMQ'] },
+  { cat: 'DevOps', items: ['Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'GitLab CI', 'ArgoCD', 'Prometheus', 'Grafana'] },
+  { cat: 'Arquitetura', items: ['Microserviços', 'DDD', 'Clean Architecture', 'Event Sourcing', 'CQRS', 'Serverless'] }
+];
+---
+
+<BaseLayout title="Currículo · Marcelo Jr | Arquiteto de Soluções AWS" description="Currículo profissional de Marcelo Jr - Arquiteto de Soluções AWS com 13+ anos de experiência em sistemas distribuídos, microserviços e Kubernetes." lang={lang}>
+  <article class="space-y-10 print:space-y-6">
+    <header class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div class="flex items-center gap-6">
+        <img
+          src={`${base}/profile.jpg`}
+          alt="Marcelo Jr"
+          class="h-24 w-24 rounded-full border-2 border-primary-500/50 shadow-lg"
+        />
+        <div>
+          <h1 class="text-4xl font-bold text-neutral-50">Marcelo Jr</h1>
+          <p class="text-lg text-primary-300">Arquiteto de Soluções · Backend Engineer</p>
+          <p class="text-neutral-400">João Pessoa · Remoto</p>
+        </div>
+      </div>
+      <a
+        href={`/${lang}/resume-pdf`}
+        class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-surface-800/60 px-5 py-2 text-sm font-semibold text-neutral-100 transition hover:-translate-y-0.5 print:hidden"
+      >
+        Download PDF
+        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 3a1 1 0 011 1v8.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L9 12.586V4a1 1 0 011-1z" />
+          <path d="M4 15a1 1 0 011 1v1h10v-1a1 1 0 112 0v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2a1 1 0 011-1z" />
+        </svg>
+      </a>
+    </header>
+
+    <section class="grid gap-4 text-sm md:grid-cols-4">
+      {contact.map(({ label, value, href }) => (
+        <a href={href} class="flex flex-col rounded-2xl border border-white/5 bg-surface-900/60 p-4 transition hover:border-primary-500/30">
+          <span class="text-xs uppercase tracking-widest text-neutral-500">{label}</span>
+          <span class="text-neutral-100">{value}</span>
+        </a>
+      ))}
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-xs uppercase tracking-[0.5em] text-neutral-400">Resumo</h2>
+      <p class="max-w-4xl text-lg text-neutral-200">
+        Arquiteto de Soluções e Engenheiro Backend com 13+ anos de experiência em sistemas financeiros de alta
+        criticidade (Itaú Unibanco, Dock, Conductor). Projeto arquiteturas distribuídas na AWS (EKS, Lambda,
+        microsserviços) com foco em resiliência, observabilidade e modernização de legados.
+      </p>
+      <ul class="grid gap-3 text-sm md:grid-cols-2">
+        {highlights.map((h) => (
+          <li class="flex items-start gap-2 rounded-2xl border border-white/5 bg-surface-900/60 p-4">
+            <span class="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary-500"></span>
+            <span class="text-neutral-200">{h}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="grid gap-4 md:grid-cols-2">
+      <div class="space-y-3">
+        <h2 class="text-xs uppercase tracking-[0.5em] text-neutral-400">Certificações</h2>
+        <div class="flex gap-4">
+          {certifications.map(({ name, badge, image }) => (
+            <a href={badge} target="_blank" rel="noreferrer" class="group flex items-center gap-3 rounded-2xl border border-white/5 bg-surface-900/60 p-4 transition hover:border-primary-500/30">
+              <img src={image} alt={name} class="h-16 w-16" />
+              <span class="text-sm text-neutral-200 group-hover:text-primary-300">{name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+      <div class="space-y-3">
+        <h2 class="text-xs uppercase tracking-[0.5em] text-neutral-400">Idiomas</h2>
+        <ul class="flex gap-4">
+          {languages.map((l) => (
+            <li class="rounded-2xl border border-white/5 bg-surface-900/60 px-5 py-3 text-neutral-200">{l}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-xs uppercase tracking-[0.5em] text-neutral-400">Experiência Profissional</h2>
+      {experience.map(({ company, role, period, location, summary, bullets, stack }) => (
+        <article class="rounded-bento border border-white/5 bg-surface-900/60 p-6 space-y-4">
+          <header class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 class="text-xl font-semibold text-primary-300">{role}</h3>
+              <p class="text-neutral-100">{company}</p>
+            </div>
+            <div class="text-right text-sm text-neutral-400">
+              <p>{period}</p>
+              <p>{location}</p>
+            </div>
+          </header>
+          <p class="text-neutral-200">{summary}</p>
+          <ul class="space-y-2 text-sm">
+            {bullets.map((b) => (
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-500"></span>
+                <span class="text-neutral-200">{b}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="text-xs text-neutral-400">Stack: {stack}</p>
+        </article>
+      ))}
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-xs uppercase tracking-[0.5em] text-neutral-400">Experiências Anteriores</h2>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {previousExperience.map(({ company, role, period, summary }) => (
+          <article class="rounded-bento border border-white/5 bg-surface-900/60 p-5 space-y-2">
+            <div>
+              <h3 class="text-lg font-semibold text-primary-300">{role}</h3>
+              <p class="text-sm text-neutral-100">{company}</p>
+              <p class="text-xs text-neutral-400">{period}</p>
+            </div>
+            <p class="text-sm text-neutral-300">{summary}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-xs uppercase tracking-[0.5em] text-neutral-400">Tecnologias</h2>
+      <div class="grid gap-4 md:grid-cols-3">
+        {technologies.map(({ cat, items }) => (
+          <article class="rounded-bento border border-white/5 bg-surface-900/60 p-5 space-y-2">
+            <h3 class="text-sm font-semibold text-neutral-100">{cat}</h3>
+            <div class="flex flex-wrap gap-2 text-xs">
+              {items.map((t) => (
+                <span class="rounded-full border border-white/10 bg-surface-950/70 px-3 py-1 text-neutral-200">{t}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-xs uppercase tracking-[0.5em] text-neutral-400">Educação</h2>
+      {education.map(({ school, course, period }) => (
+        <article class="rounded-bento border border-white/5 bg-surface-900/60 p-5">
+          <h3 class="text-lg font-semibold text-neutral-100">{school}</h3>
+          <p class="text-neutral-300">{course}</p>
+          <p class="text-sm text-neutral-400">{period}</p>
+        </article>
+      ))}
+    </section>
+
+    <section class="space-y-4 print:hidden">
+      <h2 class="text-xs uppercase tracking-[0.5em] text-neutral-400">Disponibilidade</h2>
+      <div class="rounded-bento border border-white/5 bg-gradient-to-br from-primary-600/20 to-surface-900/60 p-6">
+        <p class="text-lg text-neutral-100">Disponível para consultorias, squads remotos e projetos pontuais.</p>
+        <p class="text-neutral-300">marcello.dudk@gmail.com · +55 83 98831-7867</p>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

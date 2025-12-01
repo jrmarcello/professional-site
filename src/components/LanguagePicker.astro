@@ -1,0 +1,33 @@
+---
+import { getAlternateLanguage, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  currentPath?: string;
+}
+
+const { lang, currentPath = '' } = Astro.props;
+const alternateLang = getAlternateLanguage(lang);
+
+// Remove the current lang prefix and add the new one
+const pathWithoutLang = currentPath.replace(/^\/(pt|en)/, '');
+const alternateUrl = `/${alternateLang}${pathWithoutLang || '/'}`;
+---
+
+<a 
+  href={alternateUrl}
+  class="flex items-center gap-2 rounded-full border border-white/10 bg-surface-900/80 px-3 py-1.5 text-sm text-neutral-300 transition hover:border-primary-500/30 hover:text-primary-300"
+  title={lang === 'pt' ? 'Switch to English' : 'Mudar para Português'}
+>
+  {lang === 'pt' ? (
+    <>
+      <span class="text-xs">🇺🇸</span>
+      <span>EN</span>
+    </>
+  ) : (
+    <>
+      <span class="text-xs">🇧🇷</span>
+      <span>PT</span>
+    </>
+  )}
+</a>

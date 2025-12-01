@@ -1,31 +1,40 @@
 ---
+import { useTranslations, type Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt' } = Astro.props;
+const t = useTranslations(lang);
+
 const stackHighlights = ['AWS (EKS/Lambda)', 'Java · Spring Boot', 'Node.js · TypeScript', 'PHP · Laravel', 'Go', 'Terraform', 'Docker · Kubernetes'];
 const gitStats = [
-  { label: 'Repos públicos', value: '19+' },
-  { label: 'Anos de experiência', value: '13+' },
-  { label: 'Linguagem principal', value: 'TS' }
+  { label: t('bento.publicRepos'), value: '19+' },
+  { label: t('bento.yearsExp'), value: '13+' },
+  { label: t('bento.mainLang'), value: 'TS' }
 ];
 const learning = ['Well-Architected Framework', 'Design Patterns avançados', 'Golang', 'Rust'];
 
-const currentDate = new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+const currentDate = new Date().toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US', { month: 'long', year: 'numeric' });
 const formattedDate = currentDate.charAt(0).toUpperCase() + currentDate.slice(1);
 ---
 
 <section class="space-y-6">
   <div class="flex items-center justify-between gap-4">
     <div>
-      <p class="text-xs uppercase tracking-[0.5em] text-neutral-400">Snapshot</p>
-      <h2 class="text-2xl">Visão geral</h2>
+      <p class="text-xs uppercase tracking-[0.5em] text-neutral-400">{t('bento.snapshot')}</p>
+      <h2 class="text-2xl">{t('bento.overview')}</h2>
     </div>
     <span class="rounded-full border border-white/10 px-4 py-1 text-xs text-neutral-300">{formattedDate}</span>
   </div>
 
   <div class="grid gap-4 lg:grid-cols-6">
     <article class="rounded-bento border border-white/5 bg-surface-900/70 p-6 shadow-card lg:col-span-3">
-      <p class="text-xs uppercase tracking-[0.3em] text-neutral-500">Stack Principal</p>
-      <h3 class="mt-2 text-2xl text-neutral-50">Tecnologias do dia a dia</h3>
+      <p class="text-xs uppercase tracking-[0.3em] text-neutral-500">{t('bento.stack')}</p>
+      <h3 class="mt-2 text-2xl text-neutral-50">{t('bento.stackTitle')}</h3>
       <p class="mt-3 text-sm text-neutral-300">
-        Do backend à infraestrutura — as tecnologias que sustentam os sistemas que projeto e entrego.
+        {t('bento.stackDesc')}
       </p>
       <div class="mt-4 flex flex-wrap gap-2">
         {stackHighlights.map((item) => (
@@ -35,17 +44,17 @@ const formattedDate = currentDate.charAt(0).toUpperCase() + currentDate.slice(1)
     </article>
 
     <article class="rounded-bento border border-white/5 bg-gradient-to-br from-primary-600/30 to-surface-900/60 p-6 shadow-card lg:col-span-2">
-      <p class="text-xs uppercase tracking-[0.3em] text-neutral-200">Localização</p>
-      <h3 class="text-xl text-neutral-50">João Pessoa · Remoto</h3>
-      <p class="mt-2 text-sm text-neutral-200">Disponível para projetos globais em fusos -3 a +2 UTC.</p>
+      <p class="text-xs uppercase tracking-[0.3em] text-neutral-200">{t('bento.location')}</p>
+      <h3 class="text-xl text-neutral-50">{t('bento.locationValue')}</h3>
+      <p class="mt-2 text-sm text-neutral-200">{t('bento.locationDesc')}</p>
       <div class="mt-4 rounded-2xl border border-white/10 bg-surface-950/60 p-4">
-        <p class="text-xs text-neutral-400">Contato</p>
+        <p class="text-xs text-neutral-400">{t('bento.contact')}</p>
         <p class="text-neutral-100">marcello.dudk@gmail.com</p>
       </div>
     </article>
 
     <article class="rounded-bento border border-white/5 bg-surface-900/70 p-6 shadow-card lg:col-span-1">
-      <p class="text-xs uppercase tracking-[0.3em] text-neutral-500">GitHub Stats</p>
+      <p class="text-xs uppercase tracking-[0.3em] text-neutral-500">{t('bento.github')}</p>
       <ul class="mt-4 space-y-4">
         {gitStats.map(({ label, value }) => (
           <li>
@@ -57,8 +66,8 @@ const formattedDate = currentDate.charAt(0).toUpperCase() + currentDate.slice(1)
     </article>
 
     <article class="rounded-bento border border-white/5 bg-surface-900/70 p-6 shadow-card lg:col-span-3">
-      <p class="text-xs uppercase tracking-[0.3em] text-neutral-500">Foco Atual</p>
-      <h3 class="mt-2 text-xl text-neutral-50">Estudando agora</h3>
+      <p class="text-xs uppercase tracking-[0.3em] text-neutral-500">{t('bento.focus')}</p>
+      <h3 class="mt-2 text-xl text-neutral-50">{t('bento.learning')}</h3>
       <div class="mt-4 grid gap-3 md:grid-cols-2">
         {learning.map((topic) => (
           <div class="rounded-2xl border border-white/10 bg-surface-950/70 px-4 py-3 text-sm text-neutral-100">

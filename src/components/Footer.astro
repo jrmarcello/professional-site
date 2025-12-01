@@ -1,10 +1,19 @@
 ---
+import { useTranslations, type Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt' } = Astro.props;
+const t = useTranslations(lang);
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const links = [
   { label: 'GitHub', href: 'https://github.com/jrmarcello' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/marcelo-jr-9698874a' },
-  { label: 'Resume', href: `${base}/resume` },
+  { label: t('btn.resume'), href: `/${lang}/resume` },
   { label: 'Email', href: 'mailto:marcello.dudk@gmail.com' }
 ];
 ---
@@ -12,8 +21,8 @@ const links = [
 <footer class="relative mt-16 rounded-bento border border-white/5 bg-surface-900/70 p-6 text-sm text-neutral-300">
   <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
     <div>
-      <p class="text-xs uppercase tracking-[0.4em] text-neutral-500">Vamos conversar?</p>
-      <p class="text-lg text-neutral-100">Disponível para consultorias, squads remotos e projetos pontuais.</p>
+      <p class="text-xs uppercase tracking-[0.4em] text-neutral-500">{t('footer.cta')}</p>
+      <p class="text-lg text-neutral-100">{t('footer.ctaDesc')}</p>
       <p class="text-neutral-400">marcello.dudk@gmail.com · +55 83 98831-7867</p>
     </div>
     <nav class="flex flex-wrap gap-3">
@@ -26,6 +35,6 @@ const links = [
   </div>
   <div class="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-white/5 pt-4 text-xs text-neutral-500">
     <span>© {new Date().getFullYear()} Marcelo Jr</span>
-    <span>Feito com Astro · João Pessoa, Brasil</span>
+    <span>{t('footer.builtWith')}</span>
   </div>
 </footer>

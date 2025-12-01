@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import BentoGrid from '../../components/BentoGrid.astro';
+import Footer from '../../components/Footer.astro';
+import { useTranslations } from '../../i18n';
+
+const lang = 'pt';
+const t = useTranslations(lang);
+
+const pageTitle = t('meta.title');
+const pageDescription = t('meta.description');
+
+const caseStudies = [
+	{
+		title: 'EKS como plataforma padrão',
+		context: 'Itaú Unibanco · Arquitetura de Soluções',
+		problem: 'Microsserviços críticos executavam em ECS Fargate com baixa observabilidade e governança.',
+		solution: 'Modelei blueprint para migrar workloads para Amazon EKS, padronizando deploys, malha de logs/metrics e integrações com produtos de crédito.',
+		results: ['Aumento do controle operacional e troubleshooting em minutos', 'Plataforma preparada para novos produtos de portabilidade e garantias externas'],
+		tech: ['AWS EKS', 'EC2', 'SNS/SQS', 'DynamoDB', 'Java'],
+		link: 'https://www.linkedin.com/in/marcelo-jr-9698874a',
+		diagram: 'Topologia EKS + integrações financeiras'
+	},
+	{
+		title: 'Circuit Breaker no core de pagamentos',
+		context: 'Dock · Squad Athos',
+		problem: 'Falhas em cascata entre microsserviços Lambda afetavam processamento de boletos.',
+		solution: 'Implementei padrões de resiliência, telemetry centralizada e otimização de RDS para absorver picos transacionais.',
+		results: ['Estabilidade durante intermitências externas', 'Redução de gargalos no RDS com tuning focado em queries críticas'],
+		tech: ['AWS Lambda', 'API Gateway', 'RDS', 'CloudFormation', 'Node.js'],
+		link: 'https://www.linkedin.com/in/marcelo-jr-9698874a',
+		diagram: 'Circuit breaker em arquitetura serverless'
+	},
+	{
+		title: 'Strangler Fig na Leads2b',
+		context: 'Leads2b · Plataforma SaaS',
+		problem: 'Monólito PHP limitava escalabilidade e entrega contínua.',
+		solution: 'Desacoplei módulos críticos para microsserviços Node.js/TypeScript, adicionando Redis, ElasticSearch e filas RabbitMQ.',
+		results: ['Novas features com deploy independente', 'Melhorias de performance nas buscas e workloads de marketing'],
+		tech: ['Node.js', 'TypeScript', 'Redis', 'ElasticSearch', 'RabbitMQ'],
+		link: 'https://www.linkedin.com/in/marcelo-jr-9698874a',
+		diagram: 'Evolução monólito → microsserviços'
+	}
+];
+
+const skillLayers = [
+	{
+		layer: t('skills.awsArchitecture'),
+		summary: 'Alta disponibilidade, resiliência e segurança.',
+		items: ['EKS · ECS · Lambda', 'SNS/SQS e integrações assíncronas', 'Landing zones e governança', 'CloudWatch + OpenTelemetry']
+	},
+	{
+		layer: 'Backend',
+		summary: 'Java e Node.js orientados a domínio.',
+		items: ['Spring Boot em microsserviços', 'Node.js/TypeScript serverless', 'Event-driven & CQRS', 'APIs para produtos de crédito']
+	},
+	{
+		layer: t('skills.modernization'),
+		summary: 'Strangler Fig e convivência com legado.',
+		items: ['Decomposição de monólitos PHP/Java', 'Migração segura de dados', 'Integração com mainframes', 'Playbooks de rollout sem downtime']
+	},
+	{
+		layer: t('skills.dataObservability'),
+		summary: 'Tuning, mensageria e visibilidade.',
+		items: ['RDS/DynamoDB performance', 'Redis · ElasticSearch · RabbitMQ', 'Pipelines de telemetria', 'Dashboards de risco e compliance']
+	}
+];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} lang={lang}>
+	<HeroSection lang={lang} />
+	<BentoGrid lang={lang} />
+
+	<section class="space-y-5">
+		<p class="text-xs uppercase tracking-[0.5em] text-neutral-400">{t('about.label')}</p>
+		<h1 class="text-4xl text-neutral-50">{t('about.greeting')}</h1>
+		<p class="max-w-4xl text-lg text-neutral-200">
+			{t('about.description')}
+			<span class="text-primary-300">{t('about.availability')}</span>.
+		</p>
+		<div class="grid gap-4 text-sm text-neutral-300 md:grid-cols-3">
+			<p class="rounded-bento border border-white/5 bg-surface-900/60 p-4">{t('about.card1')}</p>
+			<p class="rounded-bento border border-white/5 bg-surface-900/60 p-4">{t('about.card2')}</p>
+			<p class="rounded-bento border border-white/5 bg-surface-900/60 p-4">{t('about.card3')}</p>
+		</div>
+	</section>
+
+	<section class="space-y-4" id="projects">
+		<div class="flex items-center justify-between gap-4">
+			<div>
+				<p class="text-xs uppercase tracking-[0.5em] text-neutral-400">{t('experience.label')}</p>
+				<h2 class="text-2xl">{t('experience.title')}</h2>
+			</div>
+		</div>
+		<div class="grid gap-6 md:grid-cols-3">
+			{caseStudies.map(({ title, context, problem, solution, results, tech, link, diagram }) => (
+				<article class="flex flex-col rounded-bento border border-white/5 bg-surface-900/60 p-5 shadow-card" aria-label={`Case study ${title}`}>
+					<div class="flex-1 space-y-5">
+						<div class="rounded-2xl border border-dashed border-white/15 bg-surface-950/60 p-4 text-sm text-neutral-400" aria-label="Placeholder diagrama de arquitetura">
+							<p class="font-mono text-xs uppercase tracking-[0.3em] text-neutral-500">Diagram placeholder</p>
+							<p class="text-neutral-200">{diagram}</p>
+						</div>
+						<div>
+							<p class="text-xs uppercase tracking-[0.3em] text-neutral-500">{context}</p>
+							<h3 class="text-xl text-primary-300">{title}</h3>
+						</div>
+						<div class="space-y-2 text-sm">
+							<p class="text-neutral-400">{t('case.problem')}</p>
+							<p class="text-neutral-100">{problem}</p>
+						</div>
+						<div class="space-y-2 text-sm">
+							<p class="text-neutral-400">{t('case.solution')}</p>
+							<p class="text-neutral-100">{solution}</p>
+						</div>
+						<div class="space-y-2 text-sm">
+							<p class="text-neutral-400">{t('case.results')}</p>
+							<ul class="space-y-1 text-neutral-100">
+								{results.map((result) => (
+									<li class="flex items-center gap-2" aria-label={`Resultado ${result}`}>
+										<span class="h-1.5 w-1.5 rounded-full bg-accent-500"></span>
+										<span>{result}</span>
+									</li>
+								))}
+							</ul>
+						</div>
+					</div>
+					<div class="mt-5 space-y-4">
+						<div class="flex flex-wrap gap-2 text-xs">
+							{tech.map((tag) => (
+								<span class="rounded-full border border-white/10 bg-surface-950/70 px-3 py-1 text-neutral-200">{tag}</span>
+							))}
+						</div>
+						<a class="inline-flex items-center gap-2 text-sm font-semibold text-accent-400 hover:text-accent-300" href={link} target="_blank" rel="noreferrer">
+							{t('case.learnMore')}
+							<svg class="h-3.5 w-3.5" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+								<path d="M3 11L11 3" />
+								<path d="M5 3H11V9" />
+							</svg>
+						</a>
+					</div>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<section class="space-y-4">
+		<p class="text-xs uppercase tracking-[0.5em] text-neutral-400">{t('skills.label')}</p>
+		<h2 class="text-2xl">{t('skills.title')}</h2>
+		<div class="grid gap-4 md:grid-cols-2">
+			{skillLayers.map(({ layer, summary, items }) => (
+				<article class="rounded-bento border border-white/5 bg-surface-900/60 p-5" aria-label={`Camada ${layer}`}>
+					<header class="flex items-center justify-between">
+						<div>
+							<p class="text-xs uppercase tracking-[0.3em] text-neutral-500">{layer}</p>
+							<p class="text-neutral-200">{summary}</p>
+						</div>
+						<span class="text-xs text-neutral-500">{items.length} {t('skills.items')}</span>
+					</header>
+					<ul class="mt-4 space-y-2 text-sm text-neutral-100">
+						{items.map((item) => (
+							<li class="flex items-center gap-2" aria-label={`Skill ${item}`}>
+								<span class="h-1.5 w-1.5 rounded-full bg-primary-500"></span>
+								<span>{item}</span>
+							</li>
+						))}
+					</ul>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<section class="space-y-6" id="github">
+		<p class="text-xs uppercase tracking-[0.5em] text-neutral-400">{t('github.label')}</p>
+		<h2 class="text-3xl text-primary-300">{t('github.title')}</h2>
+		<p class="max-w-3xl text-neutral-200">{t('github.description')}</p>
+		<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+			<a href="https://github.com/jrmarcello/mession" target="_blank" rel="noreferrer" class="group rounded-bento border border-white/5 bg-surface-900/60 p-5 shadow-card transition hover:border-primary-500/30">
+				<div class="flex items-start justify-between">
+					<h3 class="text-lg text-neutral-50 group-hover:text-primary-300">mession</h3>
+					<span class="rounded-full bg-emerald-500/20 px-2 py-0.5 text-xs text-emerald-400">SaaS</span>
+				</div>
+				<p class="mt-2 text-sm text-neutral-300">Plataforma que conecta missionários, mantenedores e agências — centralizando sustento e comunicação.</p>
+			</a>
+			<a href="https://github.com/jrmarcello/runasty" target="_blank" rel="noreferrer" class="group rounded-bento border border-white/5 bg-surface-900/60 p-5 shadow-card transition hover:border-primary-500/30">
+				<div class="flex items-start justify-between">
+					<h3 class="text-lg text-neutral-50 group-hover:text-primary-300">runasty</h3>
+					<span class="rounded-full bg-primary-600/20 px-2 py-0.5 text-xs text-primary-300">TypeScript</span>
+				</div>
+				<p class="mt-2 text-sm text-neutral-300">Leaderboard competitivo de corrida integrado ao Strava. 5K, 10K e meia maratona.</p>
+			</a>
+			<a href="https://github.com/jrmarcello/boardscore" target="_blank" rel="noreferrer" class="group rounded-bento border border-white/5 bg-surface-900/60 p-5 shadow-card transition hover:border-primary-500/30">
+				<div class="flex items-start justify-between">
+					<h3 class="text-lg text-neutral-50 group-hover:text-primary-300">boardscore</h3>
+					<span class="rounded-full bg-primary-600/20 px-2 py-0.5 text-xs text-primary-300">TypeScript</span>
+				</div>
+				<p class="mt-2 text-sm text-neutral-300">Placar digital em tempo real para jogos de tabuleiro e cartas.</p>
+			</a>
+			<a href="https://github.com/jrmarcello/scriba-project" target="_blank" rel="noreferrer" class="group rounded-bento border border-white/5 bg-surface-900/60 p-5 shadow-card transition hover:border-primary-500/30">
+				<div class="flex items-start justify-between">
+					<h3 class="text-lg text-neutral-50 group-hover:text-primary-300">skriba</h3>
+					<span class="rounded-full bg-emerald-500/20 px-2 py-0.5 text-xs text-emerald-400">SaaS</span>
+				</div>
+				<p class="mt-2 text-sm text-neutral-300">Sistema completo de gestão para igrejas.</p>
+			</a>
+			<a href="https://github.com/jrmarcello/padroes-projeto" target="_blank" rel="noreferrer" class="group rounded-bento border border-white/5 bg-surface-900/60 p-5 shadow-card transition hover:border-primary-500/30">
+				<div class="flex items-start justify-between">
+					<h3 class="text-lg text-neutral-50 group-hover:text-primary-300">padroes-projeto</h3>
+					<span class="rounded-full bg-amber-500/20 px-2 py-0.5 text-xs text-amber-400">Patterns</span>
+				</div>
+				<p class="mt-2 text-sm text-neutral-300">Estudo e prática de padrões arquiteturais com exemplos em código.</p>
+			</a>
+			<a href="https://github.com/jrmarcello" target="_blank" rel="noreferrer" class="group flex items-center justify-center rounded-bento border border-dashed border-white/10 bg-surface-950/40 p-5 transition hover:border-primary-500/30">
+				<span class="text-sm text-neutral-400 group-hover:text-primary-300">{t('github.viewAll')} →</span>
+			</a>
+		</div>
+	</section>
+
+	<Footer lang={lang} />
+</BaseLayout>

@@ -1,16 +1,25 @@
 ---
+import { useTranslations, type Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'pt' } = Astro.props;
+const t = useTranslations(lang);
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const ctas = [
-  { label: 'GitHub', href: 'https://github.com/jrmarcello', variant: 'primary' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/marcelo-jr-9698874a', variant: 'ghost' },
-  { label: 'Currículo', href: `${base}/resume`, variant: 'ghost' }
+  { label: t('btn.github'), href: 'https://github.com/jrmarcello', variant: 'primary' },
+  { label: t('btn.linkedin'), href: 'https://www.linkedin.com/in/marcelo-jr-9698874a', variant: 'ghost' },
+  { label: t('btn.resume'), href: `/${lang}/resume`, variant: 'ghost' }
 ];
 
 const signalCards = [
-  { label: 'Atuação', value: 'Consultor & PJ', detail: 'Projetos sob demanda · Squads remotos' },
-  { label: 'Local', value: 'João Pessoa, Brasil', detail: 'Remoto · Fusos -3 a +2' },
-  { label: 'Certificação', value: 'AWS Solutions Architect', detail: 'Associate · 2x Certified', badge: 'https://www.credly.com/badges/0d0332c2-5ce2-4192-aee3-dcaeb2d06c88/public_url' }
+  { label: t('hero.availability'), value: lang === 'pt' ? 'Consultor & PJ' : 'Consultant & Contractor', detail: t('hero.availabilityDesc') },
+  { label: t('bento.location'), value: t('hero.location'), detail: t('hero.locationDesc') },
+  { label: t('hero.certifications'), value: t('hero.certValue'), detail: t('hero.certDetail'), badge: 'https://www.credly.com/badges/0d0332c2-5ce2-4192-aee3-dcaeb2d06c88/public_url' }
 ];
 ---
 
@@ -22,17 +31,15 @@ const signalCards = [
     <div class="space-y-6">
       <div class="flex items-start justify-between gap-6">
         <div class="space-y-6">
-          <p class="text-xs uppercase tracking-[0.6em] text-neutral-500">Solution Architect · Backend Engineer</p>
+          <p class="text-xs uppercase tracking-[0.6em] text-neutral-500">{t('hero.role')}</p>
           <h1 class="text-4xl leading-tight text-neutral-50 md:text-5xl">
-            Arquiteto sistemas que escalam junto com o seu negócio.
+            {t('hero.headline')}
           </h1>
         </div>
         <img src={`${base}/profile.jpg`} alt="Marcelo Jr" class="hidden h-20 w-20 flex-shrink-0 rounded-full border-2 border-primary-500/50 shadow-lg lg:block" />
       </div>
       <p class="max-w-2xl text-lg text-neutral-200">
-        13+ anos projetando sistemas distribuídos na AWS para bancos, fintechs e SaaS. Especialista em
-        microserviços, Kubernetes, modernização de legados e observabilidade. Do design ao deploy — com
-        foco em disponibilidade e segurança.
+        {t('hero.description')}
       </p>
       <div class="flex flex-wrap gap-3">
         {ctas.map((cta) => {
