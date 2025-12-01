@@ -7,7 +7,7 @@ const {
 } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="pt-BR" class="bg-slate-950 text-slate-100">
+<html lang="pt-BR" class="bg-surface-950 text-neutral-50">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -15,8 +15,9 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{pageTitle}</title>
   </head>
-  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
-    <main class="mx-auto max-w-6xl px-6 py-12">
+  <body class="relative min-h-screen bg-surface-950 text-neutral-50 antialiased">
+    <div class="grid-overlay pointer-events-none absolute inset-0 opacity-50"></div>
+    <main class="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-6 py-12">
       <slot />
     </main>
   </body>
