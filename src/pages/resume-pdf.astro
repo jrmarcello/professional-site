@@ -310,14 +310,59 @@
       margin-top: 2px;
     }
     
-    /* Print Styles */
+    /* Print Styles - Light Theme for PDF */
     @media print {
+      :root {
+        --primary: #4f46e5;
+        --accent: #0891b2;
+        --surface: #ffffff;
+        --surface-light: #f8fafc;
+        --text: #1e293b;
+        --text-muted: #475569;
+        --text-dim: #64748b;
+        --border: #e2e8f0;
+      }
+      
       body {
-        background: var(--surface) !important;
+        background: white !important;
+        color: #1e293b !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
       
       .page {
         padding: 8mm 10mm;
+        background: white !important;
+      }
+      
+      .header-left h1 {
+        color: #1e293b !important;
+      }
+      
+      .experience-role,
+      .sidebar-item-title,
+      .prev-exp-role {
+        color: #1e293b !important;
+      }
+      
+      .summary {
+        background: #f8fafc !important;
+        border-color: #e2e8f0 !important;
+      }
+      
+      .highlight-item {
+        background: #f8fafc !important;
+        border-color: #e2e8f0 !important;
+        color: #1e293b !important;
+      }
+      
+      .highlight-item::before {
+        color: #0891b2 !important;
+      }
+      
+      .experience-bullets li::before,
+      .lang-item::before {
+        background: #0891b2 !important;
       }
       
       @page {
