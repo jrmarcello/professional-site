@@ -1,0 +1,12 @@
+# Robots.txt for marcelojr.com.br
+# Professional Portfolio Site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://marcelojr.com.br/sitemap.xml
+
+# Block crawlers from PDF version (it's for printing, not indexing)
+User-agent: *
+Disallow: /resume-pdf/

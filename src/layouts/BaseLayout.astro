@@ -1,19 +1,63 @@
 ---
 import '../styles/global.css';
 
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+}
+
 const {
-  title: pageTitle = 'Site Pessoal',
-  description: pageDescription = 'Portfolio focado em arquitetura de software.'
+  title: pageTitle = 'Marcelo Jr · Arquiteto de Soluções & Backend Engineer',
+  description: pageDescription = 'Arquiteto de Soluções AWS com 13+ anos de experiência em sistemas distribuídos, microserviços, Kubernetes e modernização de legados para bancos, fintechs e SaaS.',
+  image: pageImage = '/og-image.jpg',
+  type: pageType = 'website',
+  noindex = false
 } = Astro.props;
+
+const siteUrl = 'https://marcelojr.com.br';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const imageUrl = new URL(pageImage, siteUrl).href;
 ---
 <!DOCTYPE html>
 <html lang="pt-BR" class="bg-surface-950 text-neutral-50">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={pageDescription} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- SEO Basic -->
     <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content={pageType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Marcelo Jr" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={imageUrl} />
+    
+    <!-- Additional SEO -->
+    <meta name="author" content="Marcelo Jr" />
+    <meta name="theme-color" content="#0f0f14" />
   </head>
   <body class="relative min-h-screen bg-surface-950 text-neutral-50 antialiased">
     <div class="grid-overlay pointer-events-none absolute inset-0 opacity-50"></div>
