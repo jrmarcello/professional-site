@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const base = import.meta.env.BASE_URL;
+
 const contact = [
   { label: 'Telefone', value: '(83) 98831-7867', href: 'tel:+5583988317867' },
   { label: 'Email', value: 'marcello.dudk@gmail.com', href: 'mailto:marcello.dudk@gmail.com' },
@@ -18,8 +20,8 @@ const highlights = [
 const languages = ['Português (nativo)', 'Inglês (Avançado)'];
 
 const certifications = [
-  { name: 'AWS Certified Solutions Architect – Associate', badge: 'https://www.credly.com/badges/0d0332c2-5ce2-4192-aee3-dcaeb2d06c88/public_url', image: '/aws-saa-badge.png' },
-  { name: 'AWS Certified Cloud Practitioner', badge: 'https://www.credly.com/badges/9fd07b51-7be1-4c6b-8bf6-58b09ac52ea8/public_url', image: '/aws-clf-badge.png' }
+  { name: 'AWS Certified Solutions Architect – Associate', badge: 'https://www.credly.com/badges/0d0332c2-5ce2-4192-aee3-dcaeb2d06c88/public_url', image: `${base}aws-saa-badge.png` },
+  { name: 'AWS Certified Cloud Practitioner', badge: 'https://www.credly.com/badges/9fd07b51-7be1-4c6b-8bf6-58b09ac52ea8/public_url', image: `${base}aws-clf-badge.png` }
 ];
 
 const experience = [
@@ -132,7 +134,7 @@ const previousExperience = [
         <p class="text-neutral-300">Arquiteto de Soluções · Engenheiro Backend · AWS Cloud</p>
       </div>
       <div class="flex items-center gap-4">
-        <a class="inline-flex items-center gap-2 rounded-full bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-glow" href="/resume.pdf" target="_blank" rel="noreferrer">
+        <a class="inline-flex items-center gap-2 rounded-full bg-primary-600 px-6 py-3 text-sm font-semibold text-white shadow-glow" href={`${base}resume.pdf`} target="_blank" rel="noreferrer">
           Baixar PDF
           <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M8 3v8" />
@@ -140,7 +142,7 @@ const previousExperience = [
             <path d="M3 13h10" />
           </svg>
         </a>
-        <img src="/profile.jpg" alt="Marcelo Jr" class="h-14 w-14 rounded-full border-2 border-primary-500/50 shadow-lg" />
+        <img src={`${base}profile.jpg`} alt="Marcelo Jr" class="h-14 w-14 rounded-full border-2 border-primary-500/50 shadow-lg" />
       </div>
     </div>
     <p class="text-neutral-200">

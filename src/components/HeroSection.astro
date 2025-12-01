@@ -1,8 +1,10 @@
 ---
+const base = import.meta.env.BASE_URL;
+
 const ctas = [
   { label: 'GitHub', href: 'https://github.com/jrmarcello', variant: 'primary' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/marcelo-jr-9698874a', variant: 'ghost' },
-  { label: 'Currículo', href: '/resume', variant: 'ghost' }
+  { label: 'Currículo', href: `${base}resume`, variant: 'ghost' }
 ];
 
 const signalCards = [
@@ -25,7 +27,7 @@ const signalCards = [
             Arquiteto sistemas que escalam junto com o seu negócio.
           </h1>
         </div>
-        <img src="/profile.jpg" alt="Marcelo Jr" class="hidden h-20 w-20 flex-shrink-0 rounded-full border-2 border-primary-500/50 shadow-lg lg:block" />
+        <img src={`${base}profile.jpg`} alt="Marcelo Jr" class="hidden h-20 w-20 flex-shrink-0 rounded-full border-2 border-primary-500/50 shadow-lg lg:block" />
       </div>
       <p class="max-w-2xl text-lg text-neutral-200">
         13+ anos projetando sistemas distribuídos na AWS para bancos, fintechs e SaaS. Especialista em
@@ -63,7 +65,7 @@ const signalCards = [
           <p class="text-xs uppercase tracking-[0.4em] text-neutral-500">{label}</p>
           {badge ? (
             <a href={badge} target="_blank" rel="noreferrer" class="group flex items-center gap-3">
-              <img src="/aws-saa-badge.png" alt="AWS Solutions Architect Associate Badge" class="h-12 w-12" />
+              <img src={`${base}aws-saa-badge.png`} alt="AWS Solutions Architect Associate Badge" class="h-12 w-12" />
               <div>
                 <p class="text-lg font-mono text-primary-300 group-hover:text-primary-200">{value}</p>
                 <p class="text-sm text-neutral-300">{detail}</p>
