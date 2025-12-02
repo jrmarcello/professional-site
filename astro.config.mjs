@@ -9,6 +9,9 @@ const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
 export default defineConfig({
   site: 'https://jrmarcello.github.io',
   base: isGitHubPages ? '/professional-site' : '/',
+  redirects: {
+    '/': '/pt/'
+  },
   vite: {
     plugins: [tailwindcss()]
   }

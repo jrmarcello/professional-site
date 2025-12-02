@@ -1,4 +1,7 @@
 ---
-// Redirect to Portuguese version by default
-return Astro.redirect('/pt/');
+// Redirect handled by astro.config.mjs redirects configuration
+// This file exists as a fallback
 ---
+
+<meta http-equiv="refresh" content="0;url=/pt/" />
+<script>window.location.href = '/pt/';</script>
