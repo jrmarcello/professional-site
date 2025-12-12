@@ -74,7 +74,7 @@ export const ui = {
     // GitHub Section
     'github.label': 'Open Source',
     'github.title': 'Projetos em destaque',
-    'github.description': 'Repositórios pinados no meu perfil — projetos pessoais e estudos que mostram meu trabalho com TypeScript, Go e arquitetura.',
+    'github.description': 'Projetos pessoais que mostram um pouco do meu trabalho',
     'github.viewAll': 'Ver todos os repos',
     
     // Footer
@@ -163,7 +163,7 @@ export const ui = {
     // GitHub Section
     'github.label': 'Open Source',
     'github.title': 'Featured projects',
-    'github.description': 'Pinned repositories on my profile — personal projects and studies showcasing my work with TypeScript, Go and architecture.',
+    'github.description': 'Personal projects showcasing my work',
     'github.viewAll': 'View all repos',
     
     // Footer

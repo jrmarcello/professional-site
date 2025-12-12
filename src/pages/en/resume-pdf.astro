@@ -145,7 +145,9 @@
     .experience-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-bottom: 6px;
     }
     
@@ -161,9 +163,9 @@
     }
     
     .experience-meta {
-      text-align: right;
       font-size: 8pt;
       color: var(--text-dim);
+      white-space: nowrap;
     }
     
     .experience-summary {
@@ -276,17 +278,23 @@
     .prev-exp-header {
       display: flex;
       justify-content: space-between;
-      font-size: 9pt;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+      font-size: 8pt;
+      margin-top: 2px;
     }
     
     .prev-exp-role {
       color: #fff;
       font-weight: 500;
+      font-size: 9pt;
     }
     
     .prev-exp-period {
       color: var(--text-dim);
       font-size: 8pt;
+      white-space: nowrap;
     }
     
     .prev-exp-company {
@@ -298,6 +306,49 @@
       font-size: 8pt;
       color: var(--text-muted);
       margin-top: 2px;
+    }
+    
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+      .page {
+        max-width: 100%;
+        padding: 16px;
+      }
+      
+      body {
+        font-size: 9pt;
+      }
+      
+      .header {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .header-left h1 {
+        font-size: 22pt;
+      }
+      
+      .header-right {
+        text-align: left;
+      }
+      
+      .highlights {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .two-columns {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .experience-item,
+      .education-item {
+        padding: 12px;
+      }
     }
     
     @media print {
@@ -418,15 +469,10 @@
         <h2 class="section-title">Professional Experience</h2>
         
         <article class="experience-item">
+          <p class="experience-role">Solutions Architect</p>
           <div class="experience-header">
-            <div>
-              <p class="experience-role">Solutions Architect</p>
-              <p class="experience-company">Itaú Unibanco</p>
-            </div>
-            <div class="experience-meta">
-              <p>Mar 2022 · Sep 2025</p>
-              <p>João Pessoa, Brazil</p>
-            </div>
+            <p class="experience-company">Itaú Unibanco</p>
+            <p class="experience-meta">Mar 2022 · Sep 2025 · João Pessoa, Brazil</p>
           </div>
           <p class="experience-summary">Design of highly complex distributed architectures on AWS ensuring rigorous security, scalability and resilience requirements.</p>
           <ul class="experience-bullets">
@@ -438,15 +484,10 @@
         </article>
         
         <article class="experience-item">
+          <p class="experience-role">Senior Software Engineer</p>
           <div class="experience-header">
-            <div>
-              <p class="experience-role">Senior Software Engineer</p>
-              <p class="experience-company">Dock</p>
-            </div>
-            <div class="experience-meta">
-              <p>Nov 2020 · Mar 2022</p>
-              <p>João Pessoa, Brazil</p>
-            </div>
+            <p class="experience-company">Dock</p>
+            <p class="experience-meta">Nov 2020 · Mar 2022 · João Pessoa, Brazil</p>
           </div>
           <p class="experience-summary">Squad responsible for Payments and Payment Slip Management core in BaaS platform with serverless architecture.</p>
           <ul class="experience-bullets">
@@ -458,15 +499,10 @@
         </article>
         
         <article class="experience-item">
+          <p class="experience-role">Software Engineer</p>
           <div class="experience-header">
-            <div>
-              <p class="experience-role">Software Engineer</p>
-              <p class="experience-company">Leads2b</p>
-            </div>
-            <div class="experience-meta">
-              <p>Jan 2020 · Sep 2020</p>
-              <p>Curitiba, Brazil</p>
-            </div>
+            <p class="experience-company">Leads2b</p>
+            <p class="experience-meta">Jan 2020 · Sep 2020 · Curitiba, Brazil</p>
           </div>
           <p class="experience-summary">B2B SaaS platform for commercial intelligence focused on core modernization.</p>
           <ul class="experience-bullets">
@@ -478,15 +514,10 @@
         </article>
         
         <article class="experience-item">
+          <p class="experience-role">Software Engineer</p>
           <div class="experience-header">
-            <div>
-              <p class="experience-role">Software Engineer</p>
-              <p class="experience-company">Conductor Tecnologia</p>
-            </div>
-            <div class="experience-meta">
-              <p>Feb 2019 · Dec 2019</p>
-              <p>João Pessoa, Brazil</p>
-            </div>
+            <p class="experience-company">Conductor Tecnologia</p>
+            <p class="experience-meta">Feb 2019 · Dec 2019 · João Pessoa, Brazil</p>
           </div>
           <p class="experience-summary">Clearing squad ensuring financial accuracy in card settlement.</p>
           <ul class="experience-bullets">
@@ -500,47 +531,47 @@
         <h2 class="section-title" style="margin-top: 16px;">Previous Experience</h2>
         
         <div class="prev-exp-item">
+          <p class="prev-exp-role">Full Stack Developer</p>
           <div class="prev-exp-header">
-            <span class="prev-exp-role">Full Stack Developer</span>
+            <span class="prev-exp-company">Assert Polo Embrapii</span>
             <span class="prev-exp-period">Apr 2017 · Jan 2019</span>
           </div>
-          <p class="prev-exp-company">Assert Polo Embrapii</p>
           <p class="prev-exp-summary">Node.js microservices, Vue.js SPAs and MongoDB for high-performance industrial operations.</p>
         </div>
         
         <div class="prev-exp-item">
+          <p class="prev-exp-role">Software Engineer</p>
           <div class="prev-exp-header">
-            <span class="prev-exp-role">Software Engineer</span>
+            <span class="prev-exp-company">Evomaster Tecnologia</span>
             <span class="prev-exp-period">Jan 2015 · Apr 2017</span>
           </div>
-          <p class="prev-exp-company">Evomaster Tecnologia</p>
           <p class="prev-exp-summary">Full cycle on real estate SaaS Havite, applying SOLID/Clean Code in PHP architecture.</p>
         </div>
         
         <div class="prev-exp-item">
+          <p class="prev-exp-role">Software Engineer</p>
           <div class="prev-exp-header">
-            <span class="prev-exp-role">Software Engineer</span>
+            <span class="prev-exp-company">State Secretary of Administration of Paraíba</span>
             <span class="prev-exp-period">Dec 2012 · Dec 2014</span>
           </div>
-          <p class="prev-exp-company">State Secretary of Administration of Paraíba</p>
           <p class="prev-exp-summary">Government systems maintenance in PHP and MySQL migration scripts.</p>
         </div>
         
         <div class="prev-exp-item">
+          <p class="prev-exp-role">Software Engineer</p>
           <div class="prev-exp-header">
-            <span class="prev-exp-role">Software Engineer</span>
+            <span class="prev-exp-company">Grupo e-Gen</span>
             <span class="prev-exp-period">Sep 2011 · Jan 2012</span>
           </div>
-          <p class="prev-exp-company">Grupo e-Gen</p>
           <p class="prev-exp-summary">Java and Spring Framework backend development for enterprise corporate systems.</p>
         </div>
         
         <div class="prev-exp-item">
+          <p class="prev-exp-role">Academic Researcher</p>
           <div class="prev-exp-header">
-            <span class="prev-exp-role">Academic Researcher</span>
+            <span class="prev-exp-company">S.I.D.E. Research Group</span>
             <span class="prev-exp-period">Mar 2011 · Jan 2014</span>
           </div>
-          <p class="prev-exp-company">S.I.D.E. Research Group</p>
           <p class="prev-exp-summary">R&D in data mining and Semantic Web (OWL/RDF), with academic publications.</p>
         </div>
       </main>
