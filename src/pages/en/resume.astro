@@ -15,10 +15,10 @@ const contact = [
 ];
 
 const highlights = [
-  'AWS architecture with HA, resilience and microservices/Serverless patterns (EKS, ECS, Lambda).',
-  'Backend engineering with Java (Spring Boot) and Node.js/TypeScript in event-driven flows.',
-  'Legacy modernization using Strangler Fig, safe data migration and mainframe coexistence.',
-  'Data & Infrastructure: RDS/DynamoDB tuning, messaging (RabbitMQ/SQS) and centralized observability.'
+  'Technical leadership and build of financial cores in Go: accounts, transactional ledger, savings and PIX.',
+  'AWS architecture with HA, resilience and microservices/Serverless (EKS, ECS, Lambda) and GitOps with ArgoCD.',
+  'Backend engineering with Go, Java (Spring Boot) and Node.js/TypeScript in event-driven flows.',
+  'End-to-end quality and observability: OpenTelemetry, TestContainers/k6 and coverage gates.'
 ];
 
 const languages = ['Portuguese (native)', 'English (Advanced)'];
@@ -29,6 +29,21 @@ const certifications = [
 ];
 
 const experience = [
+  {
+    company: 'Appmax',
+    role: 'Staff Engineer',
+    period: 'Dec 2025 · Present',
+    location: 'Remote',
+    summary:
+      'I lead the design and build of the Banking vertical — the platform\'s financial services core — combining technical leadership with hands-on execution on critical services.',
+    bullets: [
+      'Built the Banking vertical: onboarding and customer registration, accounts, transactional ledger, savings and PIX integration.',
+      'Tech leadership: architectural decisions, team mentoring and evolution of engineering practices with SDD + TDD and ADRs.',
+      'End-to-end observability with OpenTelemetry; quality with golangci-lint, vulncheck, semgrep, TestContainers, k6 and coverage gates (diff and global).',
+      'CI/CD: Bitbucket Pipelines → ECR → AWS EKS with ArgoCD + Kustomize, ensuring traceable and reproducible deliveries.'
+    ],
+    stack: 'Go, Gin, PostgreSQL, Redis (cache/idempotency), OpenTelemetry, AWS EKS, ArgoCD, Kustomize, Clean Architecture'
+  },
   {
     company: 'Itaú Unibanco',
     role: 'Solutions Architect',
@@ -129,16 +144,17 @@ const previousExperience = [
 ];
 
 const technologies = [
-  { cat: 'Languages', items: ['TypeScript', 'JavaScript', 'Java', 'Python', 'PHP', 'SQL', 'PL/SQL'] },
-  { cat: 'Backend', items: ['Node.js', 'Spring Boot', 'Express', 'NestJS', 'CodeIgniter'] },
-  { cat: 'Frontend', items: ['Vue.js', 'HTML/CSS', 'JavaScript'] },
-  { cat: 'AWS Cloud', items: ['EKS', 'ECS', 'Lambda', 'EC2', 'DynamoDB', 'RDS', 'SNS/SQS', 'API Gateway', 'CloudFormation', 'Glue'] },
+  { cat: 'Languages', items: ['Go', 'TypeScript', 'JavaScript', 'Java', 'Python', 'PHP', 'SQL', 'PL/SQL'] },
+  { cat: 'Backend', items: ['Gin', 'Node.js', 'Spring Boot', 'Express', 'NestJS', 'Clean Architecture'] },
+  { cat: 'Frontend', items: ['Vue.js', 'Astro', 'HTML/CSS', 'JavaScript'] },
+  { cat: 'AWS Cloud', items: ['EKS', 'ECS', 'Lambda', 'EC2', 'DynamoDB', 'RDS', 'SNS/SQS', 'API Gateway'] },
+  { cat: 'DevOps & Quality', items: ['ArgoCD', 'Kustomize', 'CloudFormation', 'Bitbucket Pipelines', 'OpenTelemetry', 'TestContainers', 'k6'] },
   { cat: 'Data', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Redis', 'ElasticSearch', 'RabbitMQ'] },
   { cat: 'Architecture', items: ['Microservices', 'DDD', 'Clean Architecture', 'Serverless', 'Event-Driven', 'System Design'] }
 ];
 ---
 
-<BaseLayout title="Resume · Marcelo Jr | AWS Solutions Architect" description="Professional resume of Marcelo Jr - AWS Solutions Architect with 13+ years of experience in distributed systems, microservices and Kubernetes." lang={lang}>
+<BaseLayout title="Resume · Marcelo Jr | AWS Solutions Architect" description="Professional resume of Marcelo Jr - AWS Solutions Architect, currently Staff Engineer at Appmax. 14+ years in distributed systems, microservices, Kubernetes and Go." lang={lang}>
   <article class="space-y-10 print:space-y-6">
     <header class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
       <div class="flex items-center gap-6">
@@ -177,9 +193,10 @@ const technologies = [
     <section class="space-y-4">
       <h2 class="text-xs uppercase tracking-[0.5em] text-neutral-400">Summary</h2>
       <p class="max-w-4xl text-lg text-neutral-200">
-        Solutions Architect and Backend Engineer with 13+ years of experience in high-criticality financial systems
-        (Itaú Unibanco, Dock, Conductor). I design distributed architectures on AWS (EKS, Lambda, microservices)
-        focused on resilience, observability and legacy modernization.
+        Solutions Architect and Backend Engineer with 14+ years in high-criticality financial systems.
+        Currently Staff Engineer at Appmax, leading the Banking vertical in Go. Former at Itaú Unibanco,
+        Dock and Conductor, designing distributed architectures on AWS (EKS, microservices) focused on
+        resilience, observability and legacy modernization.
       </p>
       <ul class="grid gap-3 text-sm md:grid-cols-2">
         {highlights.map((h) => (
@@ -287,7 +304,7 @@ const technologies = [
     <section class="space-y-4 print:hidden">
       <h2 class="text-xs uppercase tracking-[0.5em] text-neutral-400">Availability</h2>
       <div class="rounded-bento border border-white/5 bg-gradient-to-br from-primary-600/20 to-surface-900/60 p-6">
-        <p class="text-lg text-neutral-100">Available for consulting, remote squads and short-term projects.</p>
+        <p class="text-lg text-neutral-100">Open to new opportunities and good conversations about architecture and distributed systems.</p>
         <p class="text-neutral-300">marcello.dudk@gmail.com · +55 83 98831-7867</p>
       </div>
     </section>

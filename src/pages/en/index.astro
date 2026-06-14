@@ -13,6 +13,16 @@ const pageDescription = t('meta.description');
 
 const caseStudies = [
 	{
+		title: 'Banking Vertical from Scratch',
+		context: 'Appmax · Staff Engineer',
+		problem: 'The platform needed its own financial services core — accounts, ledger, savings and PIX — with the reliability expected from a banking core.',
+		solution: 'I lead the design and build of the core services in Go with Clean Architecture: transactional ledger, idempotency via Redis, PIX integration and end-to-end observability with OpenTelemetry.',
+		results: ['In-house financial core: accounts, ledger, savings and PIX', 'Quality backed by SDD + TDD, coverage gates and GitOps with ArgoCD'],
+		tech: ['Go', 'Gin', 'PostgreSQL', 'Redis', 'AWS EKS', 'ArgoCD'],
+		link: 'https://www.linkedin.com/in/marcelo-jr-9698874a',
+		diagram: 'Event-driven Banking core in Go'
+	},
+	{
 		title: 'EKS as Standard Platform',
 		context: 'Itaú Unibanco · Solutions Architecture',
 		problem: 'Critical microservices ran on ECS Fargate with low observability and governance.',
@@ -31,29 +41,19 @@ const caseStudies = [
 		tech: ['AWS Lambda', 'API Gateway', 'RDS', 'CloudFormation', 'Node.js'],
 		link: 'https://www.linkedin.com/in/marcelo-jr-9698874a',
 		diagram: 'Circuit breaker in serverless architecture'
-	},
-	{
-		title: 'Modernization at Leads2b',
-		context: 'Leads2b · SaaS Platform',
-		problem: 'PHP monolith limited scalability and continuous delivery.',
-		solution: 'Decoupled critical modules to Node.js/TypeScript microservices, adding Redis, ElasticSearch and RabbitMQ queues.',
-		results: ['New features with independent deploy', 'Performance improvements in searches and marketing workloads'],
-		tech: ['Node.js', 'TypeScript', 'Redis', 'ElasticSearch', 'RabbitMQ'],
-		link: 'https://www.linkedin.com/in/marcelo-jr-9698874a',
-		diagram: 'Monolith → microservices evolution'
 	}
 ];
 
 const skillLayers = [
 	{
 		layer: t('skills.awsArchitecture'),
-		summary: 'HA, resilience and container orchestration.',
-		items: ['EKS · ECS · Lambda · EC2', 'SNS/SQS · API Gateway', 'DynamoDB · RDS · Glue', 'CloudFormation · CloudWatch']
+		summary: 'HA, resilience, orchestration and GitOps.',
+		items: ['EKS · ECS · Lambda · EC2', 'SNS/SQS · API Gateway', 'DynamoDB · RDS · Glue', 'ArgoCD · Kustomize · CloudFormation']
 	},
 	{
 		layer: 'Backend',
-		summary: 'Event-driven Java and Node.js.',
-		items: ['Spring Boot · Microservices', 'Node.js · TypeScript · Express', 'Event-driven · DDD', 'RESTful APIs · System Design']
+		summary: 'Event-driven Go, Java and Node.js.',
+		items: ['Go · Gin · Clean Architecture', 'Spring Boot · Microservices', 'Node.js · TypeScript · Express', 'Event-driven · DDD · System Design']
 	},
 	{
 		layer: t('skills.modernization'),
@@ -62,8 +62,8 @@ const skillLayers = [
 	},
 	{
 		layer: t('skills.dataObservability'),
-		summary: 'Tuning, messaging and databases.',
-		items: ['PostgreSQL · MySQL · SQL Server', 'MongoDB · Redis · ElasticSearch', 'RabbitMQ · SQS', 'Circuit Breakers · Retries']
+		summary: 'Tuning, messaging and observability.',
+		items: ['PostgreSQL · MySQL · SQL Server', 'MongoDB · Redis · ElasticSearch', 'RabbitMQ · SQS', 'OpenTelemetry · k6 · Circuit Breakers']
 	}
 ];
 

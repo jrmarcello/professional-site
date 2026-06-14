@@ -8,13 +8,15 @@ interface Props {
 const { lang = 'pt' } = Astro.props;
 const t = useTranslations(lang);
 
-const stackHighlights = ['AWS (EKS/Lambda)', 'Java · Spring Boot', 'Node.js · TypeScript', 'PHP · Laravel', 'Go', 'Terraform', 'Docker · Kubernetes'];
+const stackHighlights = ['Node.js · TypeScript', 'Go', 'Docker · Kubernetes', 'AWS (EKS/Lambda)'];
 const gitStats = [
   { label: t('bento.publicRepos'), value: '19+' },
-  { label: t('bento.yearsExp'), value: '13+' },
-  { label: t('bento.mainLang'), value: 'TS' }
+  { label: t('bento.yearsExp'), value: '14+' },
+  { label: t('bento.mainLang'), value: 'TS · Go' }
 ];
-const learning = ['Well-Architected Framework', 'Design Patterns avançados', 'Golang', 'Rust'];
+const learning = lang === 'pt'
+  ? ['Core Banking & sistemas financeiros', 'Go avançado & concorrência', 'OpenTelemetry & SRE', 'Rust']
+  : ['Core Banking & financial systems', 'Advanced Go & concurrency', 'OpenTelemetry & SRE', 'Rust'];
 
 const currentDate = new Date().toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US', { month: 'long', year: 'numeric' });
 const formattedDate = currentDate.charAt(0).toUpperCase() + currentDate.slice(1);

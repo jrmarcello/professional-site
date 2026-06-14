@@ -13,6 +13,16 @@ const pageDescription = t('meta.description');
 
 const caseStudies = [
 	{
+		title: 'Vertical de Banking do zero',
+		context: 'Appmax · Staff Engineer',
+		problem: 'A plataforma precisava de um núcleo de serviços financeiros próprio — contas, ledger, rendimento e PIX — com a confiabilidade exigida por um core bancário.',
+		solution: 'Lidero a concepção e construção dos serviços core em Go com Clean Architecture: ledger transacional, idempotência via Redis, integração com PIX e observabilidade ponta-a-ponta com OpenTelemetry.',
+		results: ['Núcleo financeiro próprio: contas, ledger, caixinhas de rendimento e PIX', 'Qualidade sustentada por SDD + TDD, gates de cobertura e GitOps com ArgoCD'],
+		tech: ['Go', 'Gin', 'PostgreSQL', 'Redis', 'AWS EKS', 'ArgoCD'],
+		link: 'https://www.linkedin.com/in/marcelo-jr-9698874a',
+		diagram: 'Núcleo de Banking event-driven em Go'
+	},
+	{
 		title: 'EKS como plataforma padrão',
 		context: 'Itaú Unibanco · Arquitetura de Soluções',
 		problem: 'Microsserviços críticos executavam em ECS Fargate com baixa observabilidade e governança.',
@@ -31,29 +41,19 @@ const caseStudies = [
 		tech: ['AWS Lambda', 'API Gateway', 'RDS', 'CloudFormation', 'Node.js'],
 		link: 'https://www.linkedin.com/in/marcelo-jr-9698874a',
 		diagram: 'Circuit breaker em arquitetura serverless'
-	},
-	{
-		title: 'Modernização na Leads2b',
-		context: 'Leads2b · Plataforma SaaS',
-		problem: 'Monólito PHP limitava escalabilidade e entrega contínua.',
-		solution: 'Desacoplei módulos críticos para microsserviços Node.js/TypeScript, adicionando Redis, ElasticSearch e filas RabbitMQ.',
-		results: ['Novas features com deploy independente', 'Melhorias de performance nas buscas e workloads de marketing'],
-		tech: ['Node.js', 'TypeScript', 'Redis', 'ElasticSearch', 'RabbitMQ'],
-		link: 'https://www.linkedin.com/in/marcelo-jr-9698874a',
-		diagram: 'Evolução monólito → microsserviços'
 	}
 ];
 
 const skillLayers = [
 	{
 		layer: t('skills.awsArchitecture'),
-		summary: 'HA, resiliência e orquestração de containers.',
-		items: ['EKS · ECS · Lambda · EC2', 'SNS/SQS · API Gateway', 'DynamoDB · RDS · Glue', 'CloudFormation · CloudWatch']
+		summary: 'HA, resiliência, orquestração e GitOps.',
+		items: ['EKS · ECS · Lambda · EC2', 'SNS/SQS · API Gateway', 'DynamoDB · RDS · Glue', 'ArgoCD · Kustomize · CloudFormation']
 	},
 	{
 		layer: 'Backend',
-		summary: 'Java e Node.js orientados a eventos.',
-		items: ['Spring Boot · Microsserviços', 'Node.js · TypeScript · Express', 'Event-driven · DDD', 'APIs RESTful · System Design']
+		summary: 'Go, Java e Node.js orientados a eventos.',
+		items: ['Go · Gin · Clean Architecture', 'Spring Boot · Microsserviços', 'Node.js · TypeScript · Express', 'Event-driven · DDD · System Design']
 	},
 	{
 		layer: t('skills.modernization'),
@@ -62,8 +62,8 @@ const skillLayers = [
 	},
 	{
 		layer: t('skills.dataObservability'),
-		summary: 'Tuning, mensageria e bancos de dados.',
-		items: ['PostgreSQL · MySQL · SQL Server', 'MongoDB · Redis · ElasticSearch', 'RabbitMQ · SQS', 'Circuit Breakers · Retries']
+		summary: 'Tuning, mensageria e observabilidade.',
+		items: ['PostgreSQL · MySQL · SQL Server', 'MongoDB · Redis · ElasticSearch', 'RabbitMQ · SQS', 'OpenTelemetry · k6 · Circuit Breakers']
 	}
 ];
 
